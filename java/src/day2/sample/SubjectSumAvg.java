@@ -1,5 +1,5 @@
 package day2.sample;
-import java.util.Scanner;
+import java.util.Scanner; // 스캔을 위한 스캐너 호출
 
 public class SubjectSumAvg {
 
