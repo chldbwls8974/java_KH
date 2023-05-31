@@ -15,4 +15,14 @@
 	[이클립스 콘솔창 한글 깨짐 해결방법]
 	Run > Run configurations > common
 	encoding 박스에서 others 체크 후 MS949 입력
+
+
+	[자바에서 값 입력받기]
+	1. 스캐너 호출 : import java.util.Scanner;
+	2. 스캐너 객체 생성 : Scanner sc = new Scanner(System.in); // 여기서 객체 이름 sc, 언제든지 변경 가능
+	next + {자료형}()
+	nextLine(): 한 줄을 통째로 받아온다. 
+		근데 nextLine()은 개행문자까지 받을 수 있기 때문에 위에서 buffer라는 변수에 nextLine()을 받아주지 않는다면
+		앞에서 남은 개행을 받아와 자기소개는 입력을 받지 못하게 된다. 따라서 buffer 변수로 한 번 더 받아줌으로서 이 문제를 해결하였다.
+	next(): 화이트 스페이스를 기준으로 한 단어를 받아온
 	
