@@ -1,7 +1,7 @@
 package day2.sample;
 import java.util.Scanner;
 
-public class Example {
+public class SubjectSumAvg {
 
 	public static void main(String[] args) {
 		int Kor;
