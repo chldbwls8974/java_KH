@@ -17,6 +17,8 @@ public class SubjectSumAvg {
 		System.out.println("수학 점수를 입력하세요.");
 		Math = sc.nextInt();
 		
+		sc.close();
+		
 		int sum = add(Kor, Eng, Math);
 		double avg = division(sum);
 		
