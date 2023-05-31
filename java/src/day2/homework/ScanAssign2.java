@@ -12,7 +12,7 @@ public class ScanAssign2 {
 		System.out.println("두 정수를 입력하세요.");
 		int num1 = sc.nextInt(), num2 = sc.nextInt();
 
-		System.out.println();
+		System.out.println(""+ num1 + "+" + num2 + "=" + (num1+num2));
 	}
 
 }
