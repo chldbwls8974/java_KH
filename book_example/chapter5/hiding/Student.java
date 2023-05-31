@@ -2,9 +2,14 @@ package hiding;
 
 public class Student {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	int studentID;
+	private String studentName;
+	int grade;
+	String address;
+	
+	public String getStudentName() {
+		return studentName;
 	}
-
+	
+	
 }
