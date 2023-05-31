@@ -11,4 +11,8 @@
 
 	클론 경우 꼬이는 경우 :.git 안에 또 .git있는 경우
 	git desk에 연결되어 있는 저장소와 작업한 로컬 저장소가 다른 경우 : file > add 를 통하여 연결시켜줄 수 있다.
+
+	[이클립스 콘솔창 한글 깨짐 해결방법]
+	Run > Run configurations > common
+	encoding 박스에서 others 체크 후 MS949 입력
 	
