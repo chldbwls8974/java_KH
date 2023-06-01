@@ -7,6 +7,7 @@ public class ScanAssign1 {
 	// 정수 두개와 산술 연사자를 입력받아 출력하시오.
 	// 입력: 1 + 2
 	// 출력: 1 + 2
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
@@ -14,6 +15,8 @@ public class ScanAssign1 {
 		String str = sc.next();
 		
 		System.out.println(str);
+		
+		sc.close();
 	}
 
 }
