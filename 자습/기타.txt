@@ -35,6 +35,8 @@
 		단축키 : ctrl + shift + 5
 
 
+	[싱글톤. 흥달쌤] https://www.youtube.com/watch?v=Aa5kWwzDRgk&list=PLniy99c_7ZfqltThMJgw0W-l8w4yn75zL&index=10
+
 	
 
 
