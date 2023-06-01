@@ -12,7 +12,7 @@ public class ScanAssign1 {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("두 정수와 산술연산자를 입력하세요.");
-		//String str = sc.next(); 이걸로 하면 공백을 기준으로 한 글자만 나옴.
+		//String str = sc.next(); 이걸로 하면 공백을 기준으로 한 글자(단어)만 나옴.
 		String str = sc.nextLine();
 		System.out.println(str);
 		

@@ -7,7 +7,7 @@ public class Bus {
 	int money;
 	
 	public Bus(int busNumber) {
-		this.busNumber = busNumber;
+		this.busNumber = busNumber; // 버스 번호를 매개변수로 받는 생성자
 	}
 	
 	public void take(int money) {

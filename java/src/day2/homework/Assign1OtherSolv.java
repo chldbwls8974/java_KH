@@ -1,3 +1,6 @@
+// 0531 과제 1 . solve2
+// String으로 받는 방법이 아닌 하나씩 나눠서 받는 방법
+
 package day2.homework;
 import java.util.*; // 단축키 ctrl + shift + 5
 
