@@ -13,12 +13,11 @@ public class Assign2 {
 		String gender = sc.next();
 		
 		if (gender.equals("M")) {
-			System.out.println("Are you a women? Men");
+			System.out.println("Are you a women? Man");
 		}
 		
-		else {System.out.println("Are you a women? Women");}
+		else {System.out.println("Are you a women? Woman");}
 		
 		sc.close();
 	}
-
 }
