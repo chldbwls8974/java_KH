@@ -17,6 +17,8 @@ public class Assign2 {
 		}
 		
 		else {System.out.println("Are you a women? Women");}
+		
+		sc.close();
 	}
 
 }

@@ -16,6 +16,8 @@ public class Assign1 {
 		String gender = sc.next();
 		
 		System.out.println("Are you a women? " + (gender.equals("M")? "Men":"Women" ));
+		
+		sc.close();
 	}
 
 }
