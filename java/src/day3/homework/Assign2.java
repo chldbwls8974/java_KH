@@ -12,7 +12,11 @@ public class Assign2 {
 		Scanner sc = new Scanner(System.in);
 		String gender = sc.next();
 		
+		if (gender.equals("M")) {
+			System.out.println("Are you a women? Men");
+		}
 		
+		else {System.out.println("Are you a women? Women");}
 	}
 
 }

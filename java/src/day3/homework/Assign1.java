@@ -10,12 +10,12 @@ public class Assign1 {
 		// 입력: M
 		// Are you a women? men
 		// Are you a women? woman
-		
+	
 		System.out.println("성별을 입력하시오. (남성인 경우 M, 여성인 경우 W)");
 		Scanner sc = new Scanner(System.in);
 		String gender = sc.next();
 		
-		System.out.println("Are you a women? ");
+		System.out.println("Are you a women? " + (gender.equals("M")? "Men":"Women" ));
 	}
 
 }
