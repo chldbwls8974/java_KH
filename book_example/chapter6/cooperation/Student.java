@@ -19,11 +19,16 @@ public class Student {
 	
 	public void takeSubway(Subway subway) {
 		subway.take(1500);
-		this.money -= money;
+		this.money -= 1500;
+	}
+	
+	public void takeTax(Tax tax) {
+		tax.take(10000);
+		this.money -= 10000;
 	}
 	
 	public void showInfo() {
-		System.out.println(studentName + "님의 남은 돈은" + money + "입니다.");
+		System.out.println(studentName + "님의 남은 돈은 " + money + "입니다.");
 	}
 
 }
