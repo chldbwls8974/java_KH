@@ -12,7 +12,7 @@ public class Assign2 {
 		int num1 = sc.nextInt();
 		int num2 = sc.nextInt();
 		
-		System.out.println("입력하신 두 수 중 큰 수는 " + ((num1 > num2)?num1:num2) + " 입니다.");
+		System.out.println("입력하신 두 수 " + num1 + " 와/과 "+ num2 + "중 큰 수는 " + ((num1 > num2)?num1:num2) + " 입니다.");
 		sc.close();
 	}
 
