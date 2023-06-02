@@ -10,7 +10,7 @@ public class NumberEx {
 		 * num이 0이면 0으로 출력하는 코드
 		 * */
 		
-System.out.println("input number");
+		System.out.println("input number");
 		
 		Scanner sc = new Scanner(System.in);
 		

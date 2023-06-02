@@ -7,7 +7,6 @@ public class MathEx {
 	public static void main(String[] args) {
 		int num1, num2;
 		String operator;
-		double result = 0.0;
 		
 		 Scanner sc = new Scanner(System.in);
 		 
@@ -16,21 +15,23 @@ public class MathEx {
 		 operator = sc.next();
 		 num2=sc.nextInt();
 		 
-		 /*if(operator.equals("+")) { result = (int)(num1 + num2); }
-		 else if(operator.equals("-")) { result = (int)(num1 - num2);}
-		 else if(operator.equals("*")) { result = (int)(num1 * num2);}
-		 else if(operator.equals("/")) { result = num1 / num2; }
-		 else if(operator.equals("%")) { result = (int)(num1 % num2);}
+		 /*
+		 if(operator.equals("+")) { result = num1 + num2; }
+		 else if(operator.equals("-")) { result = num1 - num2;}
+		 else if(operator.equals("*")) { result = num1 * num2;}
+		 else if(operator.equals("/")) { double result = (double)num1 / num2; }
+		 else if(operator.equals("%")) { result = num1 % num2;}
 		 
 		 System.out.println("" + num1 + operator + num2 + " = " + result);
 		 */
 		 
+		
 		 if(operator.equals("+")) { System.out.println("" + num1 + operator + num2 + " = " + (num1+num2));}
 		 else if(operator.equals("-")) { System.out.println("" + num1 + operator + num2 + " = " + (num1-num2));}
 		 else if(operator.equals("*")) { System.out.println("" + num1 + operator + num2 + " = " + (num1*num2));}
 		 else if(operator.equals("/")) {  System.out.println("" + num1 + operator + num2 + " = " + ((double)num1/num2));}
 		 else if(operator.equals("%")) {  System.out.println("" + num1 + operator + num2 + " = " + (num1%num2));}
-		 
+		 else {System.out.println("다시 입력하세요.");}
 		 
 		 sc.close();
 	}
