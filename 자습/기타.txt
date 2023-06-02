@@ -1,4 +1,4 @@
-# 0531 
+ 
 	1. 설치 후 환경변수 설정 : pc 속성, 환경변수, path, java/jdk/bin 파일 경로 추가
 	2. 버전 알아보기 : cmd 창에 java -version
 
@@ -38,11 +38,13 @@
 	[싱글톤. 흥달쌤] https://www.youtube.com/watch?v=Aa5kWwzDRgk&list=PLniy99c_7ZfqltThMJgw0W-l8w4yn75zL&index=10
 
 	
-
+	[이클립스 단축키 확인] ctrl + shift + L
+	
+	
 
 
 선생님 깃허브: st8324/java0530
 
-
+카톡 공지 동영상 시청 : 샘플 보고 댓글 달기
 
 	
