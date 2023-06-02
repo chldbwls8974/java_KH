@@ -1,6 +1,6 @@
 package arraylist;
 import java.util.ArrayList;
-import array.Subject;
+import array.Subject; // 이게 몰까요오
 
 public class Student {
 
@@ -9,17 +9,19 @@ public class Student {
 	String studentName;
 	ArrayList<Subject> subjectList; // ArrayList 선언하기
 	
+	// 생성자
 	public Student(int studentID, String studentName) {
 		this.studentID = studentID;
 		this.studentName = studentName;
 		subjectList = new ArrayList<Subject>();
 	}
 	
+	// 학생이 수강하는 과목을 subjectList 배열에 하나식 추가하는 메서드
 	public void addSubject(String name, int score) {
-		Subject subject = new Subject();
-		subject.setScorePoint(score);
-		subject.setName(name);
-		subjectList.add(subject);
+		Subject subject = new Subject(); // Subject 생성하기
+		subject.setScorePoint(score); // 점수 추가하기
+		subject.setName(name); // 과목이름 추가하기
+		subjectList.add(subject); // 배열에 저장하기
 	}
 	
 	public void showStudentInfo() {
