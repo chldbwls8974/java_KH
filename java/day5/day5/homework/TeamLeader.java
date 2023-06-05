@@ -14,26 +14,25 @@ public class TeamLeader {
 		// 3의 배수는 팀장, 아닌 수는 팀원
 		
 		//switch 문
-		int studentMax = 30;
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("input student number");
 		int num = sc.nextInt();
 		
-		switch( studentMax % num ) {
+		switch(num % 3 ) {
 		case 0:
-			System.out.println("input student number " + num + "is a TeamLeader.");
+			System.out.println("input student number " + num + " is a TeamLeader.");
 			break;
 			
 		case 1:
-			System.out.println("input student number " + num + "is a just Team Member.");
+			System.out.println("input student number " + num + " is a just Team Member.");
 			break;
 			
 		case 2:
-			System.out.println("input student number " + num + "is a just Team Member.");
+			System.out.println("input student number " + num + " is a just Team Member.");
 			break;
 			
-			default:
-				System.out.println("plz rewrite");
+		
 		}
 		
 		
