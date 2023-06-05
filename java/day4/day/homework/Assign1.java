@@ -14,7 +14,7 @@ public class Assign1 {
 		int eng = sc.nextInt();
 		int math = sc.nextInt();
 		
-		System.out.println("세 과목 성적의 평균은 " + (kor + eng + math)/3 + " 입니다.");
+		System.out.println("세 과목 성적의 평균은 " + (kor + eng + math)/3.0 + " 입니다.");
 		
 		sc.close();
 
