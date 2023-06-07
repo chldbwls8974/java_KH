@@ -1,4 +1,4 @@
-package day6.whileex;
+package day6.practice;
 
 import java.util.Scanner;
 
