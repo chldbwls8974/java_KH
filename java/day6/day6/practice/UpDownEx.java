@@ -11,7 +11,6 @@ public class UpDownEx {
 		
 		int num = 0;
 		char ans = 'y';
-	
 		
 			while ( ans != 'n') {
 				int random =(int)( Math.random()*(max - min + 1) + min);
