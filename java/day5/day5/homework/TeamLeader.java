@@ -21,18 +21,12 @@ public class TeamLeader {
 		
 		switch(num % 3 ) {
 		case 0:
-			System.out.println("input student number " + num + " is a TeamLeader.");
+			System.out.println("student " + num + " is a TeamLeader.");
 			break;
 			
-		case 1:
-			System.out.println("input student number " + num + " is a just Team Member.");
-			break;
-			
-		case 2:
-			System.out.println("input student number " + num + " is a just Team Member.");
-			break;
-			
-		
+		default:		//case 1: case 2:
+			System.out.println("student number " + num + " is a just Team Member.");
+			//break;
 		}
 		
 		
