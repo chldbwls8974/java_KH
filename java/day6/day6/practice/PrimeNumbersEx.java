@@ -8,7 +8,7 @@ public class PrimeNumbersEx {
 		
 		
 		for(int i = 2 ; i <= 100 ; i++) {
-			int count = 0;
+			int count = 0;    // 위치 신경쓰자
 			for(int j = 1 ; j <= i ; j++) {
 				if ( i % j == 0) count++;
 			}
