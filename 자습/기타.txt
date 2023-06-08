@@ -39,6 +39,12 @@
 
 	
 	[이클립스 단축키 확인] ctrl + shift + L
+
+
+	[출력코드]
+		println : 개행
+		print : 개행없이
+		printf : 문자열 형태로 만들어서 출력 c언어랑 비슷한듯,,,,?        ex) ... . prinf("String : %s \n" , "abc"); >>> String : abc
 	
 	
 
