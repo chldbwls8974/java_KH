@@ -15,7 +15,7 @@ public class MethodLCMEx {
 		int num1 = sc.nextInt(), num2 = sc.nextInt();
 		
 		int gcd= gcd(num1,num2);
-		int lcm= lcm(num1,num2);
+		int lcm= lcm1(num1,num2);
 		
 		System.out.println("LCM is a " + num1*num2/gcd);
 		System.out.println("LCM is a " + lcm);
@@ -38,7 +38,7 @@ public class MethodLCMEx {
 	}
 	
 	// 최대 공약수를 이용하지 않고 최소 공배수 찾는 코드
-	public static int lcm(int num1, int num2) {
+	public static int lcm1(int num1, int num2) {
 		for(int i = num1 ; i<= num1 * num2 ; i+=num1) {
 			if(isMultiple(i, num2)) {
 				return i;
