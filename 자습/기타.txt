@@ -45,6 +45,13 @@
 		println : 개행
 		print : 개행없이
 		printf : 문자열 형태로 만들어서 출력 c언어랑 비슷한듯,,,,?        ex) ... . prinf("String : %s \n" , "abc"); >>> String : abc
+
+
+	[예외처리]
+		/* 스위치문  예외처리
+ 		* default:
+ 		 	throw new RuntimeException("Wrong operator!");
+
 	
 	
 
