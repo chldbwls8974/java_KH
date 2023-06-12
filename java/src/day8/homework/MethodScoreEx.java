@@ -10,6 +10,7 @@ public class MethodScoreEx {
 	int num = sc.nextInt();
 	
 	System.out.println(score(num));
+	System.out.println(getGrade(num));
 	
 	sc.close();
 	}
@@ -24,5 +25,27 @@ public class MethodScoreEx {
 	
 		}
 		return ' ';
+	}
+	
+	
+	// if 문과 switch문을 혼합하여 사용할 수 있는 코드
+	public static String getGrade(double score) {
+		if(score > 100 || score < 0) {
+			return "Wrong score!";
+		}
+		int res = (int)(score/10);
+		
+		switch(res) {
+		case 10: case 9:
+			return "A";
+		case 8:
+			return "B";
+		case 7:
+			return "C";
+		case 6:
+			return "D";
+		default:
+			return "F";
+		}
 	}
 }

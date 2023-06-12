@@ -9,11 +9,29 @@ public class MethodPrintCharEx {
 		// ***
 		// ????
 		// ^^^^^^
+
+	star();
+	star2();
+	op();
+	op2();
 		
-		// 메인메서드도 메서드인데? 그러면 그냥 이렇게 하면 되는거 아닌가?
-		System.out.println("****");
-		System.out.println("***");
-		System.out.println("????");
-		System.out.println("^^^^^^");
 	}
+	
+	public static void star() {
+		System.out.println("****");
+	}
+	
+	public static void star2() {
+		System.out.println("***");
+	}
+	
+	public static void op() {
+		System.out.println("????");
+	}
+	
+	public static void op2() {
+		System.out.println("^^^^^^^^^");
+	}
+
+	
 }
