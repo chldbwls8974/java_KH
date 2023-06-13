@@ -105,9 +105,10 @@ class Rect2{
 	public void move(int x, int y) {
 		int dx = leftUp.getX()- x ;
 		int dy = leftUp.getY() - y;
-		//rightDownX = rightDown.getX() - dx;
-		
+		leftUp.move(x, y);
+		rightDown.move(rightDown.getX()-dx, rightDown.getY()-dy);
 	}
-	
+
+
 }
 }
