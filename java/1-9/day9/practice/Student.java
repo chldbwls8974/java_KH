@@ -9,52 +9,33 @@ public class Student {
 	
 	// 멤버변수
 	private static int serialNum = 1000;
-	String name;
-	int residentYear;
-	int grade;
-	int classNum;
-	int studentNum;
+	private String name;
+	private int grade;
+	private int residentyear;
+	private int classNum;
+	private String studentNum;
 	
 	
-	// 학번 생성자
-	public Student() {
-		serialNum++;
-		studentNum = serialNum + grade;
-	}
 	// 생성자
 	public Student(String name,int residentyear, int grade, int classNum) {
 		this.name = name;
-		this.residentYear = residentyear;
+		this.residentyear = residentyear;
 		this.grade = grade;
 		this.classNum = classNum;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getGrade() {
-		return grade;
-	}
-	public void setGrade(int grade) {
-		this.grade = grade;
+		serialNum++;
+		studentNum = ""+ residentyear + grade + classNum + serialNum;
 	}
 	
-	public int getClassNum() {
-		return classNum;
-	}
-	public void setClassNum(int classNum) {
-		this.classNum = classNum;
-	}
 
+
+	/*
 	public static int getSerialNum() {
 		int i = 10;
 		return serialNum;
 	}
 	public static void setSerialNum(int serialNum) {
 		Student.serialNum = serialNum;
-	}
+	}*/
 	
 	
 	// 출력 메서드
