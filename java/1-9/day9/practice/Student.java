@@ -15,6 +15,7 @@ public class Student {
 	int classNum;
 	int studentNum;
 	
+	
 	// 학번 생성자
 	public Student() {
 		serialNum++;
