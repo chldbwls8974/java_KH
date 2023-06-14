@@ -2,7 +2,7 @@ package day11.homework;
 
 import java.util.Scanner;
 
-public class BaseballGameEx {
+public class Other {
 
 	public static void main(String[] args) {
 
@@ -16,27 +16,20 @@ public class BaseballGameEx {
 		randomArray(1, 9, base);
 		print(base);
 		
-		
 		do {
 		System.out.print("input num: ");
 		for(int i = 0 ; i < 3 ; i++) {
 			ans[i] = sc.nextInt();
 		}
-		
 		if(getCount(base, ans)==9) { 
 			result = "3O";
 			System.out.println(result);
 		}
-		else if (getCount(base, ans)==0) {
-			result = "3S";
-			System.out.println(result);
+		else {
+			System.out.println(res(base,ans)); 
 		}
-		else if (getCount(base, ans)!=9) {
-			res(base,ans);
-		}
-		} while(result.equals("3O") || result.equals("3S") );
-		
-		System.out.println("GOOD!");
+		} while(!res(base,ans).equals("3S") );
+		System.out.println("Good!");
 		
 		sc.close();
 		
@@ -66,8 +59,9 @@ public class BaseballGameEx {
 	
 	
 	// B and S check method
-	public static void res(int arr1[], int arr2[]) {
+	public static String res(int arr1[], int arr2[]) {
 		int s=0, b=0;
+		String result="";
 		for(int i = 0 ; i < arr1.length ; i++) {
 			for(int j = 0 ; j < arr1.length ; j++) {
 				if(arr1[i] == arr2[j]) {
@@ -77,9 +71,19 @@ public class BaseballGameEx {
 			}
 		}
 		
-		if (s>0 && b>0) System.out.println(s + "S " + b +"B");
-		else if (s > 0) System.out.println(s + "S");
-		else System.out.println(b+"B");
+		if (s>0 && b>0) {
+			result = s + "S" + b + "B";
+			return result;
+		}
+		else if (s > 0) {
+			result = s + "S";
+			return result;
+		}
+		else { 
+			result = b +"B";
+			return result;
+			
+		}
 		
 	}
 
