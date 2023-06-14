@@ -16,26 +16,44 @@ public class BaseballGameEx {
 		Scanner sc = new Scanner(System.in);
 		
 		int max = 9, min = 1;
-		int ran = (int)( Math.random()*(max - min + 1) +min);
+		int []base = new int[3];
+		int []ans = new int[3];
 		
+	
 		
+		System.out.println("input num");
+		for(int i = 0 ; i < 3 ; i++) {
+			base[i] = (int)( Math.random()*(max - min + 1) + min);
+			ans[i] = sc.nextInt();
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		print(base);
+		print(ans);
+		System.out.println(res(base,ans));		
 		
 		sc.close();
 		
 	}
-
+	
+	// 배열 출력 메서드
+	public static void print(int arr[]) {
+		for(int num : arr) {
+			System.out.print(num);
+		}
+		System.out.println();
+	}
+	
+	// 비교 메서드
+	public static String res(int arr1[], int arr2[]) {
+		for(int i = 0 ; i < arr1.length ; i++) {
+			for(int j = 0 ; j < arr1.length ; j++) {
+				if(arr1[i]==arr2[j]) {
+					if(i==j) return "S";
+					else return "B";
+				}
+				
+			}
+		}
+		return "";
+	}
 }

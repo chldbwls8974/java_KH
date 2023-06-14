@@ -25,7 +25,11 @@ public class ArrayMethodEx1 {
 		System.out.println("======= ");
 		
 		// 두 배열을 교환
+		// 매개변수로 넘겨준 배열의 주소가 메서드 안에서 바뀌면 워논에 영향이 없음
 		swap(arr1, arr2);
+		
+		// 매개변수로 넘겨준 배열의 주소가 아닌 배열의 값이 메서드 안에서 바뀌면
+		// 원본이 영향을 받음
 		swap2(arr1, arr2);
 		
 		printArr(arr1);
