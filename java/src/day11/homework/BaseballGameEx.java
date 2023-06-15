@@ -2,62 +2,34 @@ package day11.homework;
 
 import java.util.Scanner;
 
+import array.Array;
+
 public class BaseballGameEx {
 
 	public static void main(String[] args) {
-
-		Scanner sc = new Scanner(System.in);
 		
 		int []base = new int[3];
 		int []ans = new int[3];
 		
-		String result = "";
 		
-		randomArray(1, 9, base);
-		print(base);
-		
-		
-		do {
-		System.out.print("input num: ");
-		for(int i = 0 ; i < 3 ; i++) {
-			ans[i] = sc.nextInt();
-		}
-		
-		if(getCount(base, ans)==9) { 
-			result = "3O";
-			System.out.println(result);
-		}
-		else if (getCount(base, ans)==0) {
-			result = "3S";
-			System.out.println(result);
-		}
-		else if (getCount(base, ans)!=9) {
-			res(base,ans);
-		}
-		} while(result.equals("3O") || result.equals("3S") );
-		
-		System.out.println("GOOD!");
-		
-		sc.close();
+		Array.creatRandomArray(1, 9, base);
+		//Array.printArray(base);
+
+		result(base,ans);
 		
 	}
-	
-	
-	// method 
-	
-	// print method
-	public static void print(int arr[]) {
-		for(int num : arr) {
-			System.out.print(num);
-		}
-		System.out.println();
-	}
-	
+		
 	// 3O check method
 	public static int getCount(int arr1[], int arr2[]) {
 		int count = 0;
-		for(int i = 0 ; i < arr1.length ; i++) {
-			for(int j = 0 ; j < arr1.length ; j++) {
+		if(arr1 == null || arr2 == null) {
+			return 0;
+		}
+		// 배열의 개수가 다른 경우 작은 크기의 배열을 기준으로 비교하기 위해 size 계산
+		int size = arr1.length < arr2.length ? arr1.length : arr2.length;
+		
+		for(int i = 0 ; i < size ; i++) {
+			for(int j = 0 ; j < size ; j++) {
 				if(arr1[i]!=arr2[j]) count++;	
 			}
 		}
@@ -66,49 +38,60 @@ public class BaseballGameEx {
 	
 	
 	// B and S check method
-	public static void res(int arr1[], int arr2[]) {
+	public static String res(int arr1[], int arr2[]) {
 		int s=0, b=0;
-		for(int i = 0 ; i < arr1.length ; i++) {
-			for(int j = 0 ; j < arr1.length ; j++) {
+		String result="";
+		int size = arr1.length < arr2.length ? arr1.length : arr2.length;
+		
+		for(int i = 0 ; i < size ; i++) {
+			for(int j = 0 ; j < size ; j++) {
 				if(arr1[i] == arr2[j]) {
 					if(i==j)  s++;
 					else if (i!=j)  b++;
 				}
 			}
 		}
-		
-		if (s>0 && b>0) System.out.println(s + "S " + b +"B");
-		else if (s > 0) System.out.println(s + "S");
-		else System.out.println(b+"B");
-		
-	}
 
-	
-	// Methods to prevent duplication
-	public static boolean contains(int arr[], int num, int count) {
-		for(int i = 0 ; i < count ; i++) {
-			if(num == arr[i]) {
-				return true;
-			}
+		if (s>0 && b>0) {
+			result = s + "S" + b + "B";
+			return result;
 		}
-		return false;
-
-	}
-	
-	public static void randomArray(int min, int max, int arr[]) {
-		if(arr == null) return;
-
-		if(max - min + 1 < arr.length) return;
-		
-		
-		int count = 0; 
-		while(count < 3) {
-			
-			int ran = (int)( Math.random()*(max - min + 1) +min);
-			if(!contains(arr,ran,count)) {
-				arr[count] = ran;
-				count++;
-			}
+		else if (s > 0) {
+			result = s + "S";
+			return result;
+		}
+		else { 
+			result = b +"B";
+			return result;
 		}
 	}
+
+	public static void result(int arr1[], int arr2[]) {
+		Scanner sc = new Scanner(System.in);
+		String result = "";
+		do {
+		System.out.print("input num: ");
+		for(int i = 0 ; i < 3 ; i++) {
+			arr2[i] = sc.nextInt();
+		}
+		
+		// 이부분 추가된 내용
+		// 사용자 입력 체크
+		if(Array.arrayCheck(arr2)) {
+			System.out.println("You must not enter the same number!");
+			continue;
+		}
+		
+		if(getCount(arr1, arr2)==9) { 
+			result = "3O";
+			System.out.println(result);
+		}
+		else {
+			System.out.println(res(arr1,arr2)); 
+		}
+		} while(!res(arr1,arr2).equals("3S") );
+		System.out.println("Good!");
+		sc.close();
+	}
+	
 }
