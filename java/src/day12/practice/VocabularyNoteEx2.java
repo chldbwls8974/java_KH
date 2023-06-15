@@ -10,6 +10,9 @@ public class VocabularyNoteEx2 {
 		
 		VocabularyNote note = new VocabularyNote(wordList);
 		note.print();
+		
+		
+		
 	}
 
 }

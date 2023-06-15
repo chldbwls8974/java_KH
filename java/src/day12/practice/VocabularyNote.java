@@ -47,8 +47,14 @@ public class VocabularyNote {
 	/** 단어가 주어지면 단어장에 추가하는 메서드
 	 * 
 	 */
-
-	
+	public void addWord(String newWord) {
+		if(wordCount == this.wordList.length) {
+			System.out.println("WordList is all filled");
+			return;
+		}
+		wordCount++;
+				
+	}
 	
 	
 	/** 단어가 주어지면 단어장에 삭제하는 메서드
