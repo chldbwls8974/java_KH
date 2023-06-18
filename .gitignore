@@ -26,3 +26,5 @@ java/.classpath
 java/.project
 book_example/.classpath
 book_example/.project
+/bin/
+/.metadata/
