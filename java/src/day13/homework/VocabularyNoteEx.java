@@ -10,8 +10,7 @@ public class VocabularyNoteEx {
 		Word wordList[]= {};
 		
 		VocabularyNote note = new VocabularyNote(wordList);
-		
-		
+
 		Scanner sc = new Scanner(System.in);
 		String menu;
 		int submenu, num;
@@ -21,13 +20,17 @@ public class VocabularyNoteEx {
 		
 		do {
 			System.out.println("input menu");
-			System.out.println("add, delete, modify, ");
+			System.out.println("add, delete, modify, search");
 			menu = sc.next();
 		switch(menu) {
 		case "add":
 			System.out.println("Enter the words you want to add.");
 			title=sc.next();
-			note.insert(new Word(title));
+			sc.nextLine();
+			System.out.println("Enter the meaning you want to add");
+			meaning = sc.nextLine();
+			
+			note.insert(new Word(title, meaning));
 			note.print();
 			break;
 		case "delete":
@@ -48,7 +51,6 @@ public class VocabularyNoteEx {
 					System.out.println("Enter the word you want to modify");
 					newTitle = sc.next();
 					note.updateTitle(title, newTitle);
-					note.print();
 					break;
 				case 2:
 					System.out.println("Enter the word");
@@ -58,9 +60,18 @@ public class VocabularyNoteEx {
 					System.out.println("Enter the  meaning you want to modify ");
 					meaning = sc.next();		
 					note.updateMeaning(title, num, meaning);
+					break;
+				case 3:
+					System.out.println("Enter the word");
+					title = sc.next();
+					System.out.println("Enter the number of meaing");
+					num = sc.nextInt();
+					note.updateMeaning(title, num, null);
 					note.print();
 					break;
 				}
+		case "search":
+			
 			}
 		
 			
