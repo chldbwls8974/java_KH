@@ -185,5 +185,26 @@ public class VocabularyNote {
 		wordList[index].setTitle(updateTitle);
 		return true;
 	}
+
+	
+	/** 단어와 삭제할 뜻의 번호가 주어지면 뜻을 삭제하고, 삭제 여부를 알려주는 메서드
+	 * 매개변수: 단어와 뜻번호 
+	 * 리턴타입: boolean
+	 * 메서드명:
+	 * @param num2
+	 * @return
+	 */
+	public boolean deleteMeaning(String title, int num) {
+		// 단어의 위치를 찾음
+		int index = indexOf(title);
+		if(index == -1) {
+		return false;
+		}
+		Word tmp = wordList[index];
+		if(tmp.removeMeaning(num)) {
+			return true;
+		}
+		return false;
+	}
 	
 }

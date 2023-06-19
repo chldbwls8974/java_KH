@@ -97,12 +97,14 @@ public class VocabularyNoteController {
 		// 단어 수정
 		case 1:
 			// 수정할 단어
-			System.out.println("Enter the word you want to modify : ");
+			System.out.println("==========================");
+			System.out.print("Enter the word you want to modify : ");
 			String word = sc.next();
 			
 			// 수정될 단어
-			System.out.println("Enter the new word : ");
+			System.out.print("Enter the new word : ");
 			String updateWord = sc.next();
+			System.out.println("==========================");
 			
 			// 단어장에 있는 단어 수정 기능을 실행
 			if(note.updateTitle(word, updateWord)) {
@@ -114,37 +116,65 @@ public class VocabularyNoteController {
 		// 뜻 수정
 		case 2:
 			// 뜻을 수정할 단어를 입력
-			System.out.println("Enter the word you want to modify");
+			System.out.println("==========================");
+			System.out.print("Enter the word you want to modify : ");
 			String title = sc.next();
 			
 			// 단어 출력하고 단어가 없으면 안내문구 출력 후 종료
 			if(note.search(title)) {
+				System.out.println("==========================");
 				System.out.println("not found");
+				System.out.println("==========================");
 				return;
 			}
 			
 			// 수정할 뜻의 번호 입력
-			System.out.println("Enter the number of meaning you want to modify");
+			System.out.print("Enter the number of meaning you want to modify : ");
 			int num = sc.nextInt();
+			
 			sc.nextLine();
 			
 			// 수정될 뜻 입력
-			System.out.println("Enter the meaning you want to modify");
+			System.out.print("Enter the meaning you want to modify : ");
 			String meaning = sc.nextLine();
+			System.out.println("==========================");
 			
 			// 단어장에서 수정
 			if(!note.updateMeaning(title, num, meaning)) {
 				System.out.println("Failed modification meaning");
 			}
 			else System.out.println("success to modify meaning");
+			break;
+			
+			
+			// 뜻 삭제
+		case 3:
+			// 뜻을 작제할 단어를 입력.
+			System.out.println("==========================");
+			System.out.print("Enter the word you want to delete : ");
+			String title2 = sc.next();
+						
+			// 단어 출력하고 단어가 없으면 안내문구 출력 후 종료
+			if(note.search(title2)) {
+				System.out.println("==========================");
+				System.out.println("not found");
+				System.out.println("==========================");
+				return;
+			}
+						
+			// 수정할 뜻의 번호 입력
+			System.out.print("Enter the number of meaning you want to modify : ");
+			int num2 = sc.nextInt();
+			System.out.println("==========================");
+			if(!note.deleteMeaning(title2, num2)) {
+			System.out.println("Failed delete meaning");
+			}
+			else {System.out.println("success to delete meaning");}
 			
 			break;
-				// 뜻 삭제
-		case 3:
-			break;
 		}
-		
 	}
+	
 
 	
 	private void printSubMenuUpdate() {
@@ -158,7 +188,7 @@ public class VocabularyNoteController {
 
 	private void deleteWord() {
 		// 삭제할 단어 입력
-		System.out.println("Eneter the word you want to delete : ");
+		System.out.print("Eneter the word you want to delete : ");
 		String title = sc.next();
 		// 해당 단어 삭제
 		if(note.delete(title)) {
@@ -169,14 +199,14 @@ public class VocabularyNoteController {
 
 	private void insertWord() {
 		// 추가할 단어 입력
-		System.out.print("Enter Word: ");
+		System.out.print("Enter Word : ");
 		String title = sc.next();
 		
 		// 단어에서 입력한 엔터 처리
 		sc.nextLine(); 
 		
 		// 추가할 뜻을 입력
-		System.out.print("Enter Meaning: ");
+		System.out.print("Enter Meaning : ");
 		String meaning = sc.nextLine();
 		
 		// 단어장에 추가
@@ -205,7 +235,7 @@ public class VocabularyNoteController {
 		// 서브 메뉴가 2이면 검색
 		case 2:
 			// 검색할 단어 입력
-			System.out.println("Enter the word you want to find");
+			System.out.print("Enter the word you want to find : ");
 			String title = sc.next();
 			// 출력
 			note.search(title);
@@ -218,7 +248,7 @@ public class VocabularyNoteController {
 		System.out.println("1. print whole word");
 		System.out.println("2. search word");
 		System.out.println("==========================");
-		System.out.print("Enter the number of menu");
+		System.out.print("Enter the number of menu : ");
 	}
 
 	
