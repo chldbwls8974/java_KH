@@ -3,9 +3,11 @@ package practice;
 public class StudentTest {
 
 	public static void main(String[] args) {
-		StudentManage std1 = new StudentManage();
-		std1.studentName="이지원";
+	
+		Student std1 = new Student("Tomas", 2018);
+		std1.print();
 		
+
 		
 	}
 

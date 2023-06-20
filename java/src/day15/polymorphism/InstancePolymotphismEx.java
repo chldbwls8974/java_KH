@@ -88,10 +88,14 @@ public class InstancePolymotphismEx {
 		}
 		
 		System.out.println("==========");
-		// 모든 라디오의 전원을 끔
+		
+		// 라디오의 전원을 끔
 		for(HomeAppliance homeAppliance : homeappliances) {
+			// 라디오로 다운캐스팅이 가능한 객체만 끔 >> 라디오만 끔
 			if(homeAppliance instanceof Radio) {
 			remocon.turnOff(homeAppliance);
+			Radio radio = (Radio)homeAppliance;  // 다운캐스팅
+			System.out.println(radio.frequency);
 			}
 		}
 		
