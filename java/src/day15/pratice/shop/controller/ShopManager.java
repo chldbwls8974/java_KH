@@ -24,10 +24,9 @@ public class ShopManager {
 		
 		System.out.println("Running ... ");
 		
-		// 메뉴 출력
+		// 메뉴 출
 				do {
 					printMenu();
-					
 					menu = sc.nextInt();
 					
 					doingMenu(menu);
