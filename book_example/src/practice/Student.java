@@ -9,8 +9,6 @@ public class Student {
 	private String studentId;
 	private String studentName;
 	private int residentYear;
-	private String subject[];
-	private int subjectCount;
 
 	public Student() {	}
 	
@@ -29,8 +27,5 @@ public class Student {
 		System.out.println("StudentID : " + studentId);
 	}
 	
-	
-	// add student method
-	public void addStudent() {
-	}
+
 }
