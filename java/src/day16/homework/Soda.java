@@ -25,5 +25,10 @@ public class Soda {
 		this.amount += amount;
 	}
 	
+	// 제품 출고
+	public void release() {
+		this.amount -= 1;
+	}
+	
 		
 }

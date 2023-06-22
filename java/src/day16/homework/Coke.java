@@ -1,10 +1,13 @@
 package day16.homework;
 
+import lombok.Data;
+
+@Data
 public class Coke {
 	private int amount;
 	private int price = 2000;
 	
-	
+	public Coke() {}
 	public Coke(int amount, int price) {
 		this.amount = amount;
 		this.price = price;
@@ -20,5 +23,9 @@ public class Coke {
 		this.amount += amount;
 	}
 	
-	//
+	// 제품 출고
+	public void release() {
+		this.amount -= 1;
+	}
+	
 }

@@ -7,6 +7,8 @@ public class BeverageMachine {
 	private Scanner sc = new Scanner(System.in);
 	private Person person[] = new Person[10];
 	private Soda soda = new Soda();
+	private Coke coke = new Coke();
+	private Fanta fanta = new Fanta();
 	private int money;
 	
 	public void run() {
@@ -61,30 +63,53 @@ public class BeverageMachine {
 		System.out.println("========================");
 		System.out.println("1. 사이다   2. 콜라   3. 환타"); 
 		System.out.print("뽑을 음료를 선택하세요 : ");
-		int num = sc.nextInt();
+		int menu = sc.nextInt();
 		// 돈을 가져옴 getMoney
 		
-		switch(num) {
+		switch(menu) {
 		case 1:
-			System.out.println("사이다");
+			System.out.println("사이다가 나옵니다.");
 			money -= soda.getPrice();
-			System.out.println(money);
+			soda.release();
+			System.out.println("잔돈 : " + money);
 			break;
 		case 2:
-			System.out.println("콜라");
-			// 잔돈계산
+			System.out.println("콜라가 나옵니다.");
+			money -= coke.getPrice();
+			coke.release();
+			System.out.println("잔돈 : " + money);
 			break;
 		case 3:
-			System.out.println("환타");
-			//잔돈계산
+			System.out.println("환타가 나옵니다.");
+			money -= fanta.getPrice();
+			fanta.release();
+			System.out.println("잔돈 : " + money);
 			break;
 		default:
 		}
 	}
 	
 	private void store() {
-		// TODO Auto-generated method stub
+		System.out.println("========================");
+		System.out.println("1. 사이다   2. 콜라   3. 환타"); 
+		System.out.print("입고할 음료를 선택하세요 : ");
+		int menu = sc.nextInt();
 		
+		System.out.print("입고 수량 : ");
+		int num = sc.nextInt();
+		
+		switch(menu) {
+		case 1:
+			soda.store(num);
+			break;
+		case 2:
+			coke.store(num);
+			break;
+		case 3:
+			fanta.store(num);
+			break;
+		default:
+		}
 	}
 
 	
