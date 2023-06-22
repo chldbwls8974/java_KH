@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Fanta {
-	private int amount;
+	private int amount=10;
 	private int price = 1500 ;
 	
 	public Fanta() {}

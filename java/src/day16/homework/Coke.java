@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Coke {
-	private int amount;
+	private int amount=10;
 	private int price = 2000;
 	
 	public Coke() {}

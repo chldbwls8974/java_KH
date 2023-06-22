@@ -5,11 +5,10 @@ import java.util.Scanner;
 public class BeverageMachine {
 
 	private Scanner sc = new Scanner(System.in);
-	private Person person[] = new Person[10];
 	private Soda soda = new Soda();
 	private Coke coke = new Coke();
 	private Fanta fanta = new Fanta();
-	private int money;
+	private int money = 0;
 	
 	public void run() {
 		int menu = -1;

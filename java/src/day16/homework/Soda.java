@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Soda {
 
-	private int amount;
+	private int amount=10;
 	private int price = 1300;
 	
 	public Soda() {}
