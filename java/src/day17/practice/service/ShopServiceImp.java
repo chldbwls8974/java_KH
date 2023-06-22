@@ -34,7 +34,7 @@ public class ShopServiceImp implements ShopService{
 		
 		// 기존 제품 입고
 		if(index!= -1) {
-			list[index] = store(product.getAmount());
+			list[index].store(product.getAmount());
 			return productCount;
 		}
 		
