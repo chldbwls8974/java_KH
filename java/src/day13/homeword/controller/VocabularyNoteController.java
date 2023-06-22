@@ -3,11 +3,12 @@ package day13.homeword.controller;
 import java.util.Scanner;
 
 import day13.homework.vo.VocabularyNote;
+import day17.interfaceex.RunInterface;
 
 
 
 
-public class VocabularyNoteController {
+public class VocabularyNoteController implements RunInterface{
 	private Scanner sc = new Scanner(System.in);
 	private VocabularyNote note = new VocabularyNote();
 	
