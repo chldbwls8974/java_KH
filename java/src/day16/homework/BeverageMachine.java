@@ -23,8 +23,8 @@ public class BeverageMachine {
 	// 메뉴 실행
 	public void printMenu() {
 		System.out.println("========= Menu =========");
-		System.out.println("1. 금액 투입");
-		System.out.println("2. 메뉴 선택");
+		System.out.println("1. 금액 투입"); // 잔돈이 나오면 금액이 0이 되게 수정할것, 잔돈이 나오지 않고 돈만 추가로 투입하는 경우에는 누적
+		System.out.println("2. 메뉴 선택"); // 메뉴 선택시 재고가 모자라면 재고 모자라다는 오류창 출력 // 금액이 모자라면 금액이 모자라다는 오류창 출력
 		System.out.println("3. 제품 입고");
 		System.out.println("4. 프로그램 종료");
 		System.out.println("========================");
