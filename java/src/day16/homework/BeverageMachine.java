@@ -53,7 +53,8 @@ public class BeverageMachine {
 	public void inputMoney() {
 		System.out.println("========================");
 		System.out.print("금액을 투입하세요 : ");
-		money = sc.nextInt();
+		int coin = sc.nextInt();
+		money += coin;
 		System.out.println(money);
 	}
 		
@@ -71,22 +72,27 @@ public class BeverageMachine {
 			money -= soda.getPrice();
 			soda.release();
 			System.out.println("잔돈 : " + money);
+			money = 0;
 			break;
 		case 2:
 			System.out.println("콜라가 나옵니다.");
 			money -= coke.getPrice();
 			coke.release();
 			System.out.println("잔돈 : " + money);
+			money = 0;
 			break;
 		case 3:
 			System.out.println("환타가 나옵니다.");
 			money -= fanta.getPrice();
 			fanta.release();
 			System.out.println("잔돈 : " + money);
+			money = 0;
 			break;
 		default:
 		}
 	}
+	
+
 	
 	private void store() {
 		System.out.println("========================");
@@ -110,8 +116,4 @@ public class BeverageMachine {
 		default:
 		}
 	}
-
-	
-
-	
 }
