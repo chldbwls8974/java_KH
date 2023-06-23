@@ -59,7 +59,7 @@ public class StringEx1 {
 		System.out.println("==========================================");
 
 		
-		// split : 구분자를 기준으로 문자열을 추출
+		// split : 구분자를 기준으로 문자열을 추출 후 순서대로 배열에 저장
 		String str5 = "사과,배,포도";
 		String fruits[] = str5.split(",");
 		for(String fruit : fruits) {
