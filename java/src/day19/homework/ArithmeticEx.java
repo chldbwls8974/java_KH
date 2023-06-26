@@ -1,5 +1,6 @@
 package day19.homework;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ArithmeticEx {
@@ -20,7 +21,11 @@ public class ArithmeticEx {
 			int num2 = sc.nextInt();
 			calculate(num1, op, num2);
 			
-		}catch(Exception e) {
+		}
+		catch(InputMismatchException e){
+			System.out.println("Wrong input!");
+		}
+		catch(Exception e) {
 			System.out.println("Exception!");
 			
 		}finally {
