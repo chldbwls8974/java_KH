@@ -55,8 +55,11 @@ public class StudentManager3 {
 			final int classnum2 = sc.nextInt();
 			final int num2 = sc.nextInt();
 			stream = list.stream();
+			/*
 			stream.filter(s -> s.getGrade() == grade2 && s.getClassNum()==classnum2 && s.getNum() == num2)
 			.forEach(name -> System.out.println(name));
+			*/
+			stream.filter(s -> s.equals(new Student(grade2, classnum2, num2,null))).forEach(name -> System.out.println(name));
 			break;
 		case 4: break;
 		default:
