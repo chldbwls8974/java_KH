@@ -25,6 +25,7 @@ public class StudentManager implements Program {
 	private Scanner sc = new Scanner(System.in);
 	private final static int EXIT = 4;
 	private ArrayList<Student> list = new ArrayList<>();
+	private Student std = new Student();
 	private int min = 1;
 	private int max = 5;
 	private Stream<Student> listStream = list.stream();
@@ -67,9 +68,9 @@ public class StudentManager implements Program {
 		// 학년별 조회
 		// 반별 조회
 		System.out.println("=====학생 조회 서브 메뉴 =====");
-		System.out.println("1. 전체 학생 검색");
-		System.out.println("2. 학년 별 검색");
-		System.out.println("3. 반 별 검색");
+		System.out.println("1. 전체 학생 조회");
+		System.out.println("2. 학년 별 조회");
+		System.out.println("3. 반 별 조회");
 		System.out.println("=========================");
 		System.out.print("메뉴를 입력하세요 : ");
 		int menu = sc.nextInt();
@@ -78,7 +79,7 @@ public class StudentManager implements Program {
 		switch(menu) {
 		case 1: 
 			listStream = list.stream();
-			listStream.map(s -> s.getName()).forEach(name -> System.out.println(name));
+			listStream.forEach(name -> System.out.println(name));
 			//listStream.forEach(name -> System.out.println(name));
 			break;
 		case 2:
@@ -96,6 +97,8 @@ public class StudentManager implements Program {
 			listStream.filter(s -> s.getGrade() == grade2 && s.getClassNum() == classnum2).forEach(name -> System.out.println(name));
 			break;
 		}
+		
+		// 조회한 내용을 가지고 가공하는 것은 나중에 생각.
 	}
 
 	
@@ -118,17 +121,73 @@ public class StudentManager implements Program {
 		}
 	}
 
-	private void printStudent() {
+	
+	// 학생 전출 및 면담,성적 관리 메뉴 연결
+	private void searchStudent() {
+		System.out.println("검색할 학생의 이름을 입력하세요.");
+		String name1 = sc.next();
+		listStream = list.stream();
+		listStream.filter(s -> s.getName().equals( name1)).forEach(name -> System.out.println(name));
 		
+		System.out.println("해당 학생 관리 메뉴를 여시겠습니까?");
+		char ans = sc.next().charAt(0);
+		if(ans == 'y') {
+			manageStudent();
+		}
+		else System.out.println("창을 닫습니다.");
 	}
 
-	private void searchStudent() {
-		// TODO Auto-generated method stub
+	// 학생 전출 및 면담,성적 관리 메뉴 연결
+	private void manageStudent() {
+		System.out.println("======== 학생 관리 메뉴 =======");
+		System.out.println("1. 학생 전출 및 퇴학"); // 해당 학생 삭제 
+		System.out.println("2. 면담 관리");
+		System.out.println("3. 성적 관리");
+		System.out.print("메뉴를 입력하세요");
+		int menu = sc.nextInt();
 		
+		switch(menu) {
+		case 1:
+			// delete
+			break;
+		case 2:
+			//면담 관리 >> 조회 추가 삭제 수정
+			break;
+		case 3:
+			// 성적 관리 >> 조회 추가 총점 
+			System.out.println("성적 관리창에 접근합니다.");
+			scoreManage();
+			break;
+			default:
+				System.out.println("잘못 입력하셨습니다.");
+		}
+	}
+
+	
+	private void scoreManage() {
+		System.out.println("1. 성적 조회");
+		System.out.println("2. 성적 추가");
+		System.out.print("메뉴를 입력하세요");
+		int menu = sc.nextInt();
+		
+		switch(menu) {
+		case 1:
+			/// 성적 조회
+			break;
+		case 2:
+			std.addScore(); // 성적 추가
+			break;
+		case 3:
+			
+			default:
+				System.out.println("잘못 입력하셨습니다.");
+		}
 	}
 
 	// 학생 진학
 	// 반배정 랜덤 (1~5반 사이에서)
+	// 3학년인 경우 졸업 >> 삭제
+	// if grade가 3보다 작으면 grade + 1, 아니면 삭제
 	private void gradeUp() {
 		
 	}

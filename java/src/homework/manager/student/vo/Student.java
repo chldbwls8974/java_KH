@@ -2,6 +2,7 @@ package homework.manager.student.vo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 import lombok.Data;
 
@@ -22,6 +23,8 @@ public class Student {
 	private String address;
 	private ArrayList<Interview> interviewNote = new ArrayList<>();
 	private ArrayList<Score> score = new ArrayList<>();
+	private Stream<Score> scoreStream = score.stream();
+	private Stream<Interview> interviewStream = interviewNote.stream();
 	
 	public Student(int grade, int classNum, int num, String name, String address) {
 		this.grade = grade;
@@ -31,6 +34,10 @@ public class Student {
 		this.address = address;
 	}
 	
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// 업데이트
 	public void addStudent(int grade, int classNum, int num, String name, String address) {
 		this.grade = grade;
@@ -39,43 +46,37 @@ public class Student {
 		this.name = name;
 		this.address = address;
 	}
-	
-	/*
-	// 학생정보 출력 (면담일자는 자동 출력 X, 응답 받아 출력
-	public void print() {
-		System.out.println("이름 : " + name);
-		System.out.println("학년 : " + grade);
-		System.out.println("반 : " + classNum);
-		System.out.println("번호 : " + num);
-		System.out.println("주소 : " + address);
-		System.out.println("성적표");
-		System.out.println("성젹표를 열람하시겠습니까?");
-			char ans = sc.next().charAt(0);
-			if(ans == 'y') {
-				printScore();
-			}
-		System.out.println("면담 일지");
-		System.out.print("면담 일지를 열람하시겠습니까?");
-			ans = sc.next().charAt(0);
-			if(ans == 'y') {
-				printInterview();
-			}
-	}*/
-	
 
-	// 학생 면담일자 출력
-	private void printInterview() {
-		for(Interview tmp : interviewNote) {
-			System.out.println(tmp);
-		}
+	// 성적 추가
+	public void addScore() {
+		System.out.println("성적을 입력하세요. (국어, 영어, 수학)");
+		int kor = sc.nextInt();
+		int eng = sc.nextInt();
+		int math = sc.nextInt();
+		
+		Score tmp = new Score(kor, eng, math);
+		score.add(tmp);
+		
+		System.out.println("전산 등록 완료!");
 	}
 	
-	// 학생 성적 출력
-	private void printScore() {
-		for(Score tmp : score) {
-			System.out.println(tmp);
-		}
+	// 성적 수정
+	public void modifyScore() {
+		
 	}
+	
+	// 성적 조회 >> 수정해야함
+	public void printScore() {
+		scoreStream = score.stream();
+		scoreStream.forEach(name -> System.out.println(name));
+	}
+	
+	// 면담 추가
+	
+	public String toString() {
+		return  grade  + "학년 " + classNum  + "반 " + num + "번 "  +" 이름: " + name + "  " +  " 주소: " + address;
+	}
+	
 	
 
 }
