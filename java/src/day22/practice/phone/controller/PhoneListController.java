@@ -114,6 +114,10 @@ public class PhoneListController {
 		System.out.println("====================");
 		System.out.println("실패");
 	}
+	
+	private void checkNum() {
+		
+	}
 
 	private void printMenu() {
 		System.out.println("====================");
