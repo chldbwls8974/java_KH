@@ -1,12 +1,17 @@
 package homework.manager.student.vo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import lombok.Data;
 
 @Data
-public class Score {
+public class Score implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int kor;
 	private int eng;
 	private int math;
@@ -27,8 +32,8 @@ public class Score {
 
 	
 	public String toString() {
-		return "국어 성적 : " + kor + "\n" + "영어 성적 : " + eng + "\n" + "수학 성적 : " + math + "\n"
-	+ "점수 총합 : " + (kor + eng + math) + " 	" + "점수 평군 : " + (double)(kor + eng + math)/3;
+		return "援��뼱 �꽦�쟻 : " + kor + "\n" + "�쁺�뼱 �꽦�쟻 : " + eng + "\n" + "�닔�븰 �꽦�쟻 : " + math + "\n"
+	+ "�젏�닔 珥앺빀 : " + (kor + eng + math) + " 	" + "�젏�닔 �룊援� : " + (double)(kor + eng + math)/3;
 	}
 
 }

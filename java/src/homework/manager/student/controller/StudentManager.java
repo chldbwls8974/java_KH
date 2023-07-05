@@ -1,5 +1,12 @@
 package homework.manager.student.controller;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -7,21 +14,8 @@ import java.util.stream.Stream;
 import homework.manager.student.vo.Student;
 
 public class StudentManager implements Program {
-	/* 기본 메뉴 
-	 * 학생 등록 -> 입학처리 -> 신규 학생 반배정 랜덤
-	 * 학생 조회 -> 전체학생 조회, 학년별 조회, 반별 조회 등등,,,
-	 * 학생 검색 -> 학생관리 서브 메뉴
-	 * */
-	
-	/* 서브 메뉴 :: 학생 관리 
-	 * 전학 
-	 * 		입 : 추가
-	 * 		출 : 삭제
-	 * 졸업 : 삭제
-	 * 진학 : 수정
-	 * */
-	
-	
+
+
 	private Scanner sc = new Scanner(System.in);
 	private final static int EXIT = 4;
 	private ArrayList<Student> list = new ArrayList<>();
@@ -32,18 +26,52 @@ public class StudentManager implements Program {
 	
 	public void run() {
 		int menu = -1;
-	
+		load();
 		do {
 		printMenu();
 		menu = sc.nextInt();
 		runMenu(menu);
 		}while(menu!=EXIT);
+		save();
 	}
 	
+	private void save() {
+		// 학생정보 저장
+		// >> 리스트 >> 하나씩 꺼내서 저장
+		// 저장 >> outputstream
+		// 객체단위로 저장 >> objectoutputstream
+		
+		try(FileOutputStream fos = new FileOutputStream("src/homework/manager/student/student.txt");
+				ObjectOutputStream oos = new ObjectOutputStream(fos)	){
+					for(Student tmp: list) {
+						oos.writeObject(tmp);
+					}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void load() {
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/homework/manager/student/student.txt"))){
+			while(true) {
+				Student tmp = (Student)ois.readObject();
+				list.add(tmp);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("No files to import.");
+		}catch(EOFException e) {
+			System.out.println("File Read Complete!");
+		}catch (IOException e) { 
+			e.printStackTrace();
+		}catch (ClassNotFoundException e) {
+			System.out.println("Student Class not found");
+		} 		
+	}
+
 	private void printMenu() {
-		System.out.println("1. 신규 학생 등록");
-		System.out.println("2. 학생 조회");
-		System.out.println("3. 학생 검색");
+		System.out.println("1.add new Student");
+		System.out.println("2.Inquiry Student");
+		System.out.println("3.Search Student");
 	}
 	
 	private void runMenu(int menu) {
@@ -52,10 +80,10 @@ public class StudentManager implements Program {
 			addStudent();
 			break;
 		case 2: 
-			inquiryStudent(); // -> print 한가지만 만들어서 stream을 이용하여 조회할 것
+			inquiryStudent(); 
 			break;
 		case 3: 
-			searchStudent(); // -> 검색한 학생에 대한 서브메뉴 출력
+			searchStudent(); 
 			break;
 		case 4: break;
 		
@@ -63,16 +91,12 @@ public class StudentManager implements Program {
 	}
 
 	private void inquiryStudent() {
-		// 학생 조회
-		// 전체조회
-		// 학년별 조회
-		// 반별 조회
-		System.out.println("=====학생 조회 서브 메뉴 =====");
-		System.out.println("1. 전체 학생 조회");
-		System.out.println("2. 학년 별 조회");
-		System.out.println("3. 반 별 조회");
+		System.out.println("===== Inquiry =====");
+		System.out.println("1.whole student");
+		System.out.println("2.grade");
+		System.out.println("3. grade and class");
 		System.out.println("=========================");
-		System.out.print("메뉴를 입력하세요 : ");
+		System.out.print("input menu: ");
 		int menu = sc.nextInt();
 		
 		
@@ -80,31 +104,29 @@ public class StudentManager implements Program {
 		case 1: 
 			listStream = list.stream();
 			listStream.forEach(name -> System.out.println(name));
-			//listStream.forEach(name -> System.out.println(name));
 			break;
 		case 2:
-			System.out.println("조회할 학년을 입력하세요.");
+			System.out.println("input grade.");
 			final int grade1 = sc.nextInt();
 			listStream = list.stream();
 			listStream.filter(s -> s.getGrade() == grade1).forEach(name -> System.out.println(name));
 			break;
 		case 3:
-			System.out.println("조회할 학년을 입력하세요.");
+			System.out.println("input grade");
 			final int grade2 = sc.nextInt();
-			System.out.println("조회할 반을 입력하세요.");
+			System.out.println("input classnum");
 			final int classnum2 = sc.nextInt();
 			listStream = list.stream();
 			listStream.filter(s -> s.getGrade() == grade2 && s.getClassNum() == classnum2).forEach(name -> System.out.println(name));
 			break;
 		}
 		
-		// 조회한 내용을 가지고 가공하는 것은 나중에 생각.
 	}
 
 	
 	private void addStudent() {
-		System.out.println("========= 신규 학생 등록 =========");
-		System.out.println("학년과 번호, 이름, 주소를 입력하세요.");
+		System.out.println("========= ADD STUDENT =========");
+		System.out.print("Input grade, name, address: ");
 		int grade = sc.nextInt();
 		String name = sc.next();
 		sc.nextLine();
@@ -117,77 +139,84 @@ public class StudentManager implements Program {
 		
 		if(!list.contains(tmp)) {
 			list.add(tmp);
-			System.out.println("등록 성공!");
+			System.out.println("Success!!");
 		}
 	}
 
 	
-	// 학생 전출 및 면담,성적 관리 메뉴 연결
 	private void searchStudent() {
-		System.out.println("검색할 학생의 이름을 입력하세요.");
+		System.out.println("Input want to search student name");
 		String name1 = sc.next();
 		listStream = list.stream();
 		listStream.filter(s -> s.getName().equals( name1)).forEach(name -> System.out.println(name));
 		
-		System.out.println("해당 학생 관리 메뉴를 여시겠습니까?");
+		System.out.println("Would you like to open the Student Management menu? (y/n)");
 		char ans = sc.next().charAt(0);
 		if(ans == 'y') {
 			manageStudent();
 		}
-		else System.out.println("창을 닫습니다.");
+		else System.out.println("FINISHED!!");
 	}
 
-	// 학생 전출 및 면담,성적 관리 메뉴 연결
 	private void manageStudent() {
-		System.out.println("======== 학생 관리 메뉴 =======");
-		System.out.println("1. 학생 전출 및 퇴학"); // 해당 학생 삭제 
-		System.out.println("2. 면담 관리");
-		System.out.println("3. 성적 관리");
-		System.out.print("메뉴를 입력하세요");
+		System.out.println("======== Student Management =======");
+		System.out.println("1. delete student"); // �빐�떦 �븰�깮 �궘�젣 
+		System.out.println("2. inquiry interview");
+		System.out.println("3. inquiry score");
+		System.out.print("input menu : ");
 		int menu = sc.nextInt();
 		
 		switch(menu) {
 		case 1:
-			// delete
+			deleteStudent();
 			break;
 		case 2:
-			//면담 관리 >> 조회 추가 삭제 수정
+			// interview
 			break;
 		case 3:
-			// 성적 관리 >> 조회 추가 총점 
-			System.out.println("성적 관리창에 접근합니다.");
 			scoreManage();
 			break;
 			default:
-				System.out.println("잘못 입력하셨습니다.");
+				System.out.println("�옒紐� �엯�젰�븯�뀲�뒿�땲�떎.");
 		}
 	}
 
 	
+	private void deleteStudent() {
+		System.out.println("enter student information you want to delete");
+		System.out.println("grade, classNum, name");
+		int grade = sc.nextInt();
+		int classNum = sc.nextInt();
+		String name = sc.next();
+		Student tmp = new Student(grade, classNum, 0, name, null);
+		list.remove(tmp);
+		
+	}
+
 	private void scoreManage() {
-		System.out.println("1. 성적 조회");
-		System.out.println("2. 성적 추가");
-		System.out.print("메뉴를 입력하세요");
+		System.out.println("1. inquiry score");
+		System.out.println("2. add score");
+		System.out.print("input menu");
 		int menu = sc.nextInt();
 		
 		switch(menu) {
 		case 1:
-			/// 성적 조회
+			/// �꽦�쟻 議고쉶
 			break;
 		case 2:
-			std.addScore(); // 성적 추가
+			std.addScore(); 
 			break;
 		case 3:
 			
 			default:
-				System.out.println("잘못 입력하셨습니다.");
+				System.out.println("Exit the Student Management Menu");
 		}
 	}
 
-	// 학생 진학
-	// 반배정 랜덤 (1~5반 사이에서)
-	// 3학년인 경우 졸업 >> 삭제
-	// if grade가 3보다 작으면 grade + 1, 아니면 삭제
+	// �븰�깮 吏꾪븰
+	// 諛섎같�젙 �옖�뜡 (1~5諛� �궗�씠�뿉�꽌)
+	// 3�븰�뀈�씤 寃쎌슦 議몄뾽 >> �궘�젣
+	// if grade媛� 3蹂대떎 �옉�쑝硫� grade + 1, �븘�땲硫� �궘�젣
 	private void gradeUp() {
 		
 	}

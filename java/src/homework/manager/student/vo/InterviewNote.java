@@ -1,13 +1,18 @@
 package homework.manager.student.vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
 import lombok.Data;
 
 @Data
-public class InterviewNote {
+public class InterviewNote implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private ArrayList<Interview> interviewNote = new ArrayList<>();
 	
@@ -40,8 +45,8 @@ public class InterviewNote {
 	}
 	
 	public void print(String name) {
-		System.out.println("======= 면담 내용 조회 =======");
-		System.out.println("이름 : " + name);
+		System.out.println("======= 硫대떞 �궡�슜 議고쉶 =======");
+		System.out.println("�씠由� : " + name);
 		for(Interview tmp : interviewNote) {
 			System.out.println(tmp);
 		}
@@ -49,13 +54,13 @@ public class InterviewNote {
 	
 
 	
-	// 학생과 면담 내용이 주어지면
-	// 없는 학생이면 학생을 추가하고, 있는 학생이면 면담 내용만 새로 추가
+	// �븰�깮怨� 硫대떞 �궡�슜�씠 二쇱뼱吏�硫�
+	// �뾾�뒗 �븰�깮�씠硫� �븰�깮�쓣 異붽��븯怨�, �엳�뒗 �븰�깮�씠硫� 硫대떞 �궡�슜留� �깉濡� 異붽�
 	public void addInterview(String name, String interview) {
 		
 	}
 	
-	// 면담 내용 수정
+	// 硫대떞 �궡�슜 �닔�젙
 	
 	
 	//
