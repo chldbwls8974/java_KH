@@ -162,6 +162,7 @@ public class StudentManager implements Program {
 	}
 
 	private void manageStudent() {
+		// 나가기 누를때까지 반복문 추가
 		System.out.println("======== Student Management =======");
 		System.out.println("1. delete student"); // �빐�떦 �븰�깮 �궘�젣 
 		System.out.println("2. inquiry interview");
@@ -174,7 +175,7 @@ public class StudentManager implements Program {
 			deleteStudent();
 			break;
 		case 2:
-			// interview
+			interviewManage();
 			break;
 		case 3:
 			scoreManage();
@@ -185,6 +186,26 @@ public class StudentManager implements Program {
 	}
 
 	
+	private void interviewManage() {
+		System.out.println("1. inquiry interview");
+		System.out.println("2. add interview");
+		System.out.print("input menu");
+		int menu = sc.nextInt();
+		
+		switch(menu) {
+		case 1:
+			std.printInterview();
+			break;
+		case 2:
+			std.addInterview(); 
+			break;
+		case 3:
+			
+			default:
+				System.out.println("Exit the Student Management Menu");
+		}
+	}
+
 	private void deleteStudent() {
 		System.out.println("enter student information you want to delete");
 		System.out.println("grade, classNum, name");

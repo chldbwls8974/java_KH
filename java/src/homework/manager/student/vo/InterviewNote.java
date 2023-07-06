@@ -44,24 +44,13 @@ public class InterviewNote implements Serializable {
 		this.interviewNote = interviewNote;
 	}
 	
-	public void print(String name) {
-		System.out.println("======= 硫대떞 �궡�슜 議고쉶 =======");
-		System.out.println("�씠由� : " + name);
-		for(Interview tmp : interviewNote) {
-			System.out.println(tmp);
-		}
+	public String toString() {
+		return name + interviewNote;
 	}
-	
 
 	
-	// �븰�깮怨� 硫대떞 �궡�슜�씠 二쇱뼱吏�硫�
-	// �뾾�뒗 �븰�깮�씠硫� �븰�깮�쓣 異붽��븯怨�, �엳�뒗 �븰�깮�씠硫� 硫대떞 �궡�슜留� �깉濡� 異붽�
 	public void addInterview(String name, String interview) {
 		
 	}
 	
-	// 硫대떞 �궡�슜 �닔�젙
-	
-	
-	//
 }
