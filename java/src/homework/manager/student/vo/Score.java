@@ -32,8 +32,11 @@ public class Score implements Serializable {
 
 	
 	public String toString() {
-		return "援��뼱 �꽦�쟻 : " + kor + "\n" + "�쁺�뼱 �꽦�쟻 : " + eng + "\n" + "�닔�븰 �꽦�쟻 : " + math + "\n"
-	+ "�젏�닔 珥앺빀 : " + (kor + eng + math) + " 	" + "�젏�닔 �룊援� : " + (double)(kor + eng + math)/3;
+		return "kor : " + kor + "\n" 
+				+ "eng : " + eng + "\n" 
+				+ "math : " + math + "\n"
+				+ "Sum score : " + (kor + eng + math) + "\n" 
+				+ "Avg score: " + (double)(kor + eng + math)/3;
 	}
 
 }

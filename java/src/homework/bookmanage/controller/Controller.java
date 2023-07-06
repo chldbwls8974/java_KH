@@ -13,7 +13,6 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 import homework.bookmanage.vo.Book;
-import homework.bookmanage.vo.Library;
 import homework.bookmanage.vo.LoanBrowsing;
 
 public class Controller {
@@ -21,19 +20,58 @@ public class Controller {
 	private final static int EXIT = 4;
 	private Scanner sc = new Scanner(System.in);
 	private ArrayList<Book> listBook = new ArrayList<>();
+	private ArrayList<LoanBrowsing> listLoan = new ArrayList<>();
 	
 	public void run() {
 		
 		int menu = -1;
-		String fileName = "src/homework/bookmanage/book.txt";
-		loadBook(fileName);
+		String bookFileName = "src/homework/bookmanage/book.txt";
+		String loanFileName = "src/homework/bookmanage/loan.txt";
+		loadBook(bookFileName);
+		loadLoan(loanFileName);
 		do {
 		printMenu();
 		menu = sc.nextInt();
 		runMenu(menu);
 		}while(menu!=EXIT);
-		saveBook(fileName);
+		saveBook(bookFileName);
+		saveLoan(loanFileName);
 	}
+	
+	private void saveLoan(String fileName) {
+		try(
+				FileOutputStream fos = new FileOutputStream(fileName);
+				ObjectOutputStream oos = new ObjectOutputStream(fos)){
+					for(LoanBrowsing tmp : listLoan) {
+						oos.writeObject(tmp);
+					}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}	
+	}
+	
+	private void loadLoan(String fileName) {
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))){
+			while(true) {
+				LoanBrowsing tmp = (LoanBrowsing)ois.readObject();
+				listLoan.add(tmp);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Cannot file import!");
+		}catch(EOFException e) {
+			System.out.println("File Read Complete!");
+		}catch (IOException e) { 
+			e.printStackTrace();
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Loan Class not found");
+		} 	
+		System.out.println(listBook);
+		
+	}
+	
+	
+	
 
 	private void saveBook(String fileName) {
 		try(
@@ -90,9 +128,29 @@ public class Controller {
 		int num = sc.nextInt();
 		
 		int index = listBook.indexOf(new Book(null, null, null,num));
+		if(index == -1) {
+			System.out.println("대출한 도서가 아닙니다.");
+			return;
+		}
+		
+//		LoanBrowsing lb 
+//		= new LoanBrowsing(listBook.get(index) , null , 14);
 		listBook.get(index).changeState();
+//		
+		System.out.println("Success!!");
+//		System.out.println("반납일 : " + lb.getReturnDateStr());
+		Book changeState = listBook.get(index);
+//		listBook.get(index).changeState();
 		
 		
+		
+		int lbIndex = listLoan.lastIndexOf(new LoanBrowsing(changeState, null, 14));
+		System.out.println(lbIndex);
+		
+		LoanBrowsing tmpLb = listLoan.get(lbIndex);
+		tmpLb.setReturnDate(new Date());
+		System.out.println("대출일 : " + tmpLb.getLoanDateStr());
+		System.out.println("반납일 : " + tmpLb.getReturnDateStr());
 		
 	}
 
@@ -131,7 +189,8 @@ public class Controller {
 			= new LoanBrowsing(listBook.get(index) , loanDate , 14);
 			
 			System.out.println("Success!!");
-			System.out.println("Loan Date : " + lb.getLoanDateStr());
+			System.out.println("대출일 : " + lb.getLoanDateStr());
+			System.out.println("반납 예정일 : " + lb.getEstiReturnDateStr());
 			return;
 		}
 		
@@ -148,6 +207,13 @@ public class Controller {
 		int num = sc.nextInt();
 		// 도서 번호,,는 어떻게 지정할 것인지 >> 등록 순서대로
 		Book tmp = new Book(name, author, ISBM,num);
+		
+		// 도서번호 중복 체크
+		if(listBook.contains(tmp)) {
+			System.out.println("이미 등록된 도서 번호입니다. 확인해주세요.");
+			return;
+		}
+		
 		listBook.add(tmp);
 		System.out.println(listBook);
 	}
@@ -159,7 +225,7 @@ public class Controller {
 		System.out.println("4. exit");
 	}
 
-
+	
 
 
 

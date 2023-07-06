@@ -145,10 +145,13 @@ public class StudentManager implements Program {
 
 	
 	private void searchStudent() {
-		System.out.println("Input want to search student name");
+		System.out.println("Input want to search student information");
+		System.out.println("grade, classnum, name: ");
+		int grade =sc.nextInt();
+		int classNum = sc.nextInt();
 		String name1 = sc.next();
 		listStream = list.stream();
-		listStream.filter(s -> s.getName().equals( name1)).forEach(name -> System.out.println(name));
+		listStream.filter(s -> s.equals(new Student(grade, classNum, 0, name1, null))).forEach(name -> System.out.println(name));
 		
 		System.out.println("Would you like to open the Student Management menu? (y/n)");
 		char ans = sc.next().charAt(0);
@@ -201,7 +204,7 @@ public class StudentManager implements Program {
 		
 		switch(menu) {
 		case 1:
-			/// �꽦�쟻 議고쉶
+			std.printScore();
 			break;
 		case 2:
 			std.addScore(); 
