@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입 예제</title>
+</head>
+<body>
+	<!-- 
+		회원가입 페이지를 작성하세요
+		아이디, 비번, 비번확인, 전화번호, 이름, 이메일, 성별 입력
+	 -->
+<h1> 회원가입 </h1>
+	 
+	 <form action="" method = "post">
+		<fieldset>
+			<legend>회원정보</legend>
+			아이디 <input type="text" name="id" placeholder="아이디"><br>
+			비밀번호 <input type="password" name="password" placeholder="비밀번호" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$"> <br>
+			<small>8~16글자, 영문 대/소문자와 숫자, 특수기호(*!#)를 조합하여 만드세요.</small><br>
+			비밀번호 확인 <input type="password" name="password" placeholder="비밀번호 확인"> <br>
+		</fieldset>
+
+		<fieldset>
+			<legend>개인정보</legend>
+			전화번호 <input type="tel" name="tel" id="" pattern="\d{3}-\d{4}-\d{4}" placeholder="전화번호"><br>
+			이름 <input type="text" name="name" placeholder="이름"><br>
+			이메일 <input type="email" name="email" placeholder="이메일"><br>
+			성별 <input type="radio" name="gender" value="female"> 여성
+			<input type="radio" name="gender" value="male" checked> 남성<br>
+		</fieldset>
+			<br><br>
+			<input type="reset" value="다시 입력하기">
+			<input type="submit" value="제출">
+	 </form>
+
+
+
+
+
+	 <!-- 또 다른 방법 
+	method post 이부분 !
+
+	-->
+	 <!-- <form action="" method = "post">  
+		<label> 
+			아이디:
+			<input type="text" name="id">
+		</label>
+		<br>
+		<label>
+			비번
+			<input type="password" name="pw" >
+		</label>
+		<br>
+		<label>
+			비번확인:
+			<input type="password" name="pw2" >
+		</label>
+		<input type="button" value="회원가입">
+	 </form> -->
+</body>
+</html>
