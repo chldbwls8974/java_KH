@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>white space</title>
+	<style>
+		.box{
+			width:200px;
+		}
+
+		.box{
+			white-space: break-spaces; /* pre=wrap과 비슷하게 동작.  */
+		}
+
+		.box2{
+			white-space: nowrap; /* 여러개의 공백을 하나로 처리하며, 영역을 무시하고 한 줄로 처리 */
+		}
+
+		.box3{
+			white-space: pre; /* 입력 그대로 공백 적용 */
+		}
+
+		.box4{
+			white-space: pre-wrap; /* 입력 그대로 공백을 적용하며, 범위를 넘어가면 줄 바꿈. 엔터 적용 */
+		}
+
+		.box5{
+			white-space: pre-line; /* 여러개의 공백을 하나로 처리하며, 엔터가 적용됨. */
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1">
+		안녕하세요. 제 이름은                                              홍길동입니다. 
+		만나서 반갑습니다.
+	</div>
+	<div class="box box2">
+		안녕하세요. 제 이름은                                              홍길동입니다. 
+		만나서 반갑습니다.
+	</div>
+	<div class="box box3">
+		안녕하세요. 제 이름은                                              홍길동입니다. 
+		만나서 반갑습니다.
+	</div>
+	<div class="box box4">
+		안녕하세요. 제 이름은                                              홍길동입니다. 
+		만나서 반갑습니다.
+	</div>
+	<div class="box box5">
+		안녕하세요. 제 이름은                                              홍길동입니다. 
+		만나서 반갑습니다.
+	</div>
+</body>
+</html>
