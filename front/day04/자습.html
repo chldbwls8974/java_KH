@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자습</title>
+	<style>
+		/* 검색창이랑 본문 내용, 본문 내용 넘기는 버튼을 만드는데, 변형도 추가함 */
+		.container{
+			background-color:antiquewhite ;
+			padding: 30px;
+			box-sizing: border-box;
+		}
+		.box{
+		 background-color: white; margin: 0 auto;
+		}
+		.box+.box{
+			margin-top: 30px;
+		}
+		.box1,.box3{
+			width: 500px; height: 100px;
+			padding-left: 10px; box-sizing: border-box;
+			
+			position: relative;
+		}
+		.box2{
+			width: 70%; height: 2000px;
+			background-color: white;
+		}
+		.searchtext{
+			width: 70%; height: 80%;
+			margin-top: 9px;
+			background-color: transparent; border: 0; outline: none;
+			position: absolute; 		float: left;
+		}
+		.btn-search{
+			width: 20%; height: 100%; background-color: brown; border: 0;
+			float: right;
+		}
+
+		/* box3 좌우 버튼 만들기 */
+		/* 꾸미기 */
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1">
+			<input type="text" class="searchtext" id="">
+			<button class="btn-search"></button>
+		</div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+	</div>
+</body>
+</html>
