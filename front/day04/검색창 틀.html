@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>검색창 틀 예제</title>
+	<style>
+		.container{
+			width: 500px; height: 100px; padding-left: 15px;
+			background-color: antiquewhite;
+			box-sizing: border-box;
+			position: relative;
+		}
+
+		.box11{
+			width: calc(70% - 10px); height: calc(100% - 30px); background-color:white;
+			position: absolute; top: 15px;
+			border: 0;
+			outline: none;
+		}
+
+		.box2{
+			width: calc(30% - 30px); height: 100%; background-color: rgb(230, 208, 181);
+			position: absolute; top: 0; right: 0;
+			border: 0;
+		}
+	</style>
+</head>
+<body>
+	<form class="container">
+		<input type="text" class="inner box11">
+		<button class="box box2"></button>
+	</form>
+</body>
+</html>

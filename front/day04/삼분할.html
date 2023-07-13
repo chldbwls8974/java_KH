@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container{
+			width: calc(100% - 2 * 10px); background-color: black; padding: 10px;
+		}
+		/* 
+		box-sizing: border-box
+			- 테두리, 패딩, 컨텐츠가 다 합쳐진 사이즈로 만들어주는 ...
+		*/
+		.box{
+			width: calc((100% - 20px) / 3); height: calc(500px - 2 * 10px); background-color: yellow;
+			float: left;
+		}
+		/* .box2{
+			margin-left: 10px;
+		}
+		.box3{
+			float: right;
+		} */
+		
+		.box+.box{
+			margin-left: 10px;
+		}
+		/* 두번째부터 마진 적용 */
+
+		.container::after{
+			content: ''; clear: both; display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+	</div>
+</body>
+</html>
