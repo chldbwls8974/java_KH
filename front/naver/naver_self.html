@@ -4,264 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Naver clone</title>
-	<style>
-		*{padding: 0; margin: 0; color: #101010;
-			font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif}
-		a{text-decoration: none;}
-		body{
-			min-width: 1340px;
-		}
-		ul,ol{list-style: none;}
-
-		/* 헤더 영역 - 검색창, 메뉴 등 */
-		header{
-			width: 1280px; 
-			margin: 0 auto; /* 박스 가운데 정렬 */
-			position: relative;
-			padding: 64px 0 42px;
-			
-			/* 삭제할 속성 */
-			background-color: yellow;
-			height: 200px;
-		}
-		/* 햄버거 메뉴 */
-		#ham_menu{
-			position: absolute;  top: 18px; left: -10px;
-		}
-		#ham_menu .btn-ham{
-			padding: 10px; cursor: pointer;
-			background-color: transparent; border: 0; outline: 0;
-		}
-		#ham_menu .btn-ham::after{
-			content: ''; display: block; background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px; /* 원본 이미지 사이즈는 844 810 >> 절반 줄여줌 */
-			background-position: -335px -284px;
-			width: 26px; height: 26px;
-			/* hover  했을 때 회색 타원 아래로 햄버거 메뉴가 깔리는데 그 문제를 해결하기 위해 position relative 사용 */
-			position: relative;
-		}
-		#ham_menu .btn-ham:hover::before{
-			content: ''; display: block; position: absolute; top: 1px; left: 1px;
-			width: 44px; height: 44px; border-radius: 50%;
-			background-color: #f5f7f8;
-		}
-		/* 검색창 영역 */
-		#box_search{
-			width: 706px; position: absolute;
-			/* 좌우 가운데 정렬 */
-			left: 50%; transform: translateX(-50%);
-			border: 1px solid #03c75a;
-			border-radius: 33px; top: 64px;
-		}
-		#box_search .box-logo{
-			float: left; width: 80px;
-		}
-		#box_search .box-logo .link-logo{
-			display: block; padding-left: 10px; margin-right: 12px; 
-		}
-		#box_search .box-logo .link-logo>.img-link-logo{
-			width: 58px; height: 58px; display: block;
-		}
-		#box_search .box-search-input{
-			float: right; width: 623px;
-		}
-
-		/* 검색창 */
-		#box_search .box-search-input .input-search{
-			padding: 17px 0; width: 480px; float: left;
-			height: 58px; border: 0; outline: 0;
-			box-sizing: border-box; line-height: 24px;
-			font-weight: bold; font-size: 24px; color: #000;
-		}
-		#box_search .box-search-input .input-search::placeholder{
-			color: #cfcfcf;
-		}
-		/* 검색버튼 */
-		#box_search .box-search-input .btn-search{
-			padding: 17px 27px 16px 10px; cursor: pointer;
-			position: absolute; top: 0; right: 0;
-			border: 0; outline: 0; background-color: transparent;
-		}
-		#box_search .box-search-input .btn-search .icon-search{
-			background-color: #a3691b; display: block;
-		}
-		#box_search .box-search-input .btn-search .icon-search::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: -364px -106px;
-			width: 25px; height: 25px; content: ''; display: block;
-		}
-		/* 가상 키보드와 자동완성 버튼 */
-		#box_search .box-btns{
-			position: absolute; top: 0; right: 61px; bottom: 0px; width: 56px;
-		}
-		#box_search .box-btns .btn-kbd{
-			padding: 21px 3px; cursor: pointer;
-			border: 0; outline: 0; background-color: transparent;
-		}
-		#box_search .box-btns .btn-kbd::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: -50px -270px;
-			width: 24px; height: 16px; content: ''; display: block;
-		}
-		#box_search .box-btns .btn-kbd:hover::before{
-			background-position: -270px -234px;
-		}
-
-		#box_search .box-btns .btn-autocomplete{
-			padding: 26px 6px; cursor: pointer; position: absolute;
-			right: 1px; top: 0;
-			border: 0; outline: 0; background-color: transparent;
-		}
-		#box_search .box-btns .btn-autocomplete::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: -412px -352px;
-			width: 10px; height: 6px; content: ''; display: block;
-		}
-
-		/* 바로가기 메뉴 */
-		.shortcut-area{
-			 width: 676px; margin: 72px auto 0;
-		}
-		.shortcut-area>.shortcut-list>.shortcut-item{
-			float: left;
-		}
-		.shortcut-area>.shortcut-list>.shortcut-item+.shortcut-item{
-			margin-left: 4px;
-		}
-		.shortcut-area>.shortcut-list .link-service{
-			position: relative; display: block; width: 64px;
-		}
-		.shortcut-area>.shortcut-list .link-service span{
-			display: block; position: relative;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon{
-			width: 48px; height: 48px;
-			margin: 0 auto;
-		} 
-		.shortcut-area>.shortcut-list .link-service .service-icon::before{
-			content: ''; display: block; position: absolute;
-			top: -2px; left: -3px;
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: 0px -128px;
-			width: 54px; height: 54px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon::after{
-			content: ''; display: block; position: absolute;
-			top: 0; left: 0; right: 0; bottom: 0;
-			margin: auto;
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			width: 44px; height: 44px;
-		}
-		.shortcut-area>.shortcut-list .link-service:hover .service-icon::before{
-			background-position: -142px 0px; top: -3px; left: -5px;
-			width: 58px; height: 58px;
-		}
-
-		/* 굳이 따로 뺀 이유 >> 다른 메뉴란을 만들기 용이하게 하기 위해 */
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-mail::after{
-			background-position: -250px -90px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-cafe::after{
-			background-position: -250px 0px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-blog::after{
-			background-position: -201px -98px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-shopping::after{
-			background-position: -90px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-news::after{
-			background-position: -0px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-stock::after{
-			background-position: -180px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-real::after{
-			background-position: -45px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-map::after{
-			background-position: -201px 0px; width: 48px; height: 48px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-toon::after{
-			background-position: -225px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .service-icon.type-more::after{
-			background-position: -250px -135px;
-		}
-		
-	
-		.shortcut-area>.shortcut-list .link-service .service-name{
-			font-size: 14px; line-height: 20px; margin-top: 7px;
-			text-align: center;
-		}
-
-
-	
-
-
-		
-
-		/* 컨텐츠 영역 */
-		#container{
-			position: relative; width: 1280px; margin: 0 auto;
-			padding-bottom: 60px;
-		}
-		#root{
-			display: block; 
-		}
-		#root .layout-module-column-left{
-			float: left; width: 830px;
-			display: block;
-			position: absolute;
-		}
-		#root .layout-module-column-left .layout-module-banner{
-			overflow: hidden; position: relative;
-			display: block; border-radius: 8px;
-			box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0, 0, 0, .04);
-		}
-		#ad_timeboard{
-			height: 130px;
-			display: block;
-		}
-		#root .layout-module-column-left .layout-module-content-area{
-			margin-top: 16px;
-			position: relative;
-			border-radius: 8px;
-			box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0, 0, 0, .04);
-			box-sizing: border-box;
-		}
-
-
-
-
-
-
-		/* footer */
-		footer{
-			min-width: 1280px; /* 최소 너비로, 브라우저 작을 때는 1280, 클때는 100% */
-			background-color: #f5f6f7;
-
-			/* 삭제할 속성 */
-			height: 300px;
-		}
-
-		/* 공통 */
-		fieldset{
-			border: 0;
-		}
-		.blind{
-			position: absolute; width: 1px; height: 1px; margin: -1px;
-			overflow: hidden;
-		}
-		.clearfix::after{
-			content: ''; clear:both; display: block;
-		}
-	</style>
+	<link rel="stylesheet" href="naver_self.css">
 </head>
 <body>
 	<header>
@@ -368,20 +111,76 @@
 				</li>
 			</ul>
 		</div>
+		<!-- 메뉴 끝 -->
+		<div class="box-pay">
+			<a href="#" class="link-pay">
+				<span class="blind">페이로 바로가기</span>
+			</a>
+		</div>
+		<!-- 네이버페이 끝 -->
+
+		<div class="box-notify">
+			<button class="btn-notify">
+				<span class="blind">알림</span>
+			</button>
+		</div>
+		<!-- 알림 끝 -->
 	</header>
-	<div id="container">
-		<div id="root">
-			<div class="layout-module-column-left">
-				<div class="layout-module-banner">
-					<div id="ad_timeboard"></div>
+	<div id="container" class="clearfix">
+		<div class="box-left">
+			<div class="box-banner">
+				<iframe src="" frameborder="0"></iframe>
+			</div>
+			<div class="box-newsstand">
+				<div class="box-header">
+					<ul class="header-list">
+						<li class="list-item">
+							<span class="">
+								<a href="#" class="link-newsstand">뉴스스탠드</a>
+								<a href="#" class="link-agency">언론사 편집</a>
+							</span>
+						</li>
+						<li class="list-item">
+							<a href="#" class="link-enter">엔터</a>
+						</li>
+						<li class="list-item">
+							<a href="#" class="link-sport">스포츠</a>
+						</li>
+						<li class="list-item">
+							<a href="#" class="link-eco">경제</a>
+						</li>
+						
+					</ul>
 				</div>
-				<!-- 뉴스스탠드 시작 -->
-				<div id="newsstand" class="layout-module-content-area">
-					<div class="content-header-view"></div>
+				<div class="box-subheader"></div>
+				<div class="box-media"></div>
+			</div>
+			<!-- 왼쪽 1번째 컨텐츠 끝 -->
+		</div>
+		
+		<!-- 컨텐츠 왼쪽 박스 끝 -->
+		<div class="box-right">
+			<div class="box-account" id="box_right1">
+				<div class="box-login">
+					<p class="box-title">네이버를 더 안전하고 편리하게 이용하세요</p>
+					<a href="#" class="link-login">
+						<i class="icon-login">
+							<span class="blind">NAVER</span>
+						</i>
+						로그인
+					</a>
+					<div class="box-links">
+						<a href="#" class="link-searchid">아이디 찾기</a>
+						<a href="#" class="link-searchpw">비밀번호 찾기</a>
+						<a href="#" class="link-joinin">회원가입</a>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!-- 컨텐츠 오른 쪽 박스 끝 -->
 	</div>
+	<!-- 컨텐츠 끝 -->
+
 	<footer></footer>
 </body>
 </html>
