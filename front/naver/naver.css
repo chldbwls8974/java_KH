@@ -443,16 +443,17 @@ header{
 }
 
 /* 뉴스스탠드 페이지 */
-#container .box-left .box-newsstand .box-newsstand-page{
+#container .box-left .box-newsstand .box-newsstand-page,
+#container .box-left .box-shopping .box-shopping-page{
 	padding: 10px 0 11px; position: relative;
 	border-top: 1px solid #ebebeb; line-height: 34px; text-align: center;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page-right .btn{
+#container .box-left  .box-page-right .btn{
 	width: 36px; height: 36px; border: 1px solid #dadcdf; background-color: #fff;
 	position: relative; display: inline-block; box-shadow: 0 1px 2px 0 rgba(0,0,0,.06);
 	border-radius: 50%; vertical-align: top; cursor: pointer;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page-right .btn-pre::before{
+#container .box-left  .box-page-right .btn-pre::before{
 	content: ''; display: block; position: absolute; margin: auto;
 	background-image: url(../img/naver_icon.png);
 	background-size: 422px 405px;
@@ -460,22 +461,25 @@ header{
 	width: 10px; height: 12px; top: 0; left: 0; right: 0; bottom: 0;
 	transform: rotate(180deg);
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page-right .btn-next::before{
+#container .box-left .box-page-right .btn-next::before{
 	content: ''; display: block; position: absolute; margin: auto;
 	background-image: url(../img/naver_icon.png);
 	background-size: 422px 405px;
 	background-position: -412px -39px;
 	width: 10px; height: 12px; top: 0; left: 0; right: 0; bottom: 0;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page-right .btn:hover{
+#container .box-left  .box-page-right .btn:hover{
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
 	background-color: #fbfbfc;
 	background-position: -412px -26px;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page-right .box-content-page{
+#container .box-left .box-page-right .box-content-page{
 	display: inline-block; color: #606060; min-width: 156px; padding: 0 16px; box-sizing: border-box;
 	font-size: 1.3rem; line-height: 35px; font-weight: 600; vertical-align: top;
 	letter-spacing: -.4px;
+}
+#container .box-left .box-page-right .box-content-page .current{
+	color: #606060;
 }
 #container .box-left .box-newsstand .box-newsstand-page .box-page-right .box-content-page .page-more{
 	color: #3a67ea;
@@ -600,10 +604,17 @@ header{
 	overflow: hidden; line-height: 20px; letter-spacing: -.8px; white-space: nowrap;
 	font-size: 1.4rem;
 }
-#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right{
-	min-width: 0; display: block; width: 250px; margin-left: auto;
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .shoptext{
+	padding-top: 10px;
 }
 
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right{
+	min-width: 0; display: block; width: 250px; margin-left: auto;
+	font-size: 14px; line-height: 20px;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top{
+
+}
 /* 각 항목에 내용 보충해줘야함. */
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-top{
 	position: relative; padding: 10px 12px 5px; border-radius: 4px; background-color: rgba(245,248,251,.6); 
@@ -618,14 +629,9 @@ header{
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom img{
 	vertical-align: top; border: 0; width: 250px; 
 }
-
-
-#container .box-left .box-shopping .box-shopping-page
-
-
-
-
-
+#container .box-left .box-shopping .box-shopping-page .box-page-right .box-content-page .page-more{
+	color: #9858f5;
+}
 
 
 #container .box-right{
@@ -634,7 +640,7 @@ header{
 
 #container .box-right> .box-account{
 	padding: 21px 20px 18px;
-	letter-spacing: -.4px; font-size: 1.4rem;
+	letter-spacing: -.4px; font-size: 1.4rem; 
 }
 
 #container .box-right> .box-account .box-title{
