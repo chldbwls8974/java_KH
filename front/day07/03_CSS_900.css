@@ -1,0 +1,7 @@
+@charset 'utf-8';
+
+
+/* 화면의 최대 크기가 900 이면 width 100% */
+.inner-box{
+	width: 100%;
+}

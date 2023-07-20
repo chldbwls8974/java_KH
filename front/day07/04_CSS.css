@@ -1,0 +1,25 @@
+@charset 'utf-8';
+
+nav{
+	position: relative;
+}
+.list-menu{
+	border: 3px solid black; list-style: none; padding: 0; margin: 0;
+}
+.list-menu::after{
+	content: ''; display: block; clear: both;
+}
+.item-menu{
+	float: left; width: 33.33%;
+}
+.item-menu+.item-menu{
+	border-left: 3px solid black; margin-left: -3px;
+}
+.link-menu{
+	display: block; height: 50px; text-align: center; line-height: 50px; font-size: 20px;
+	color: black; text-decoration: none;
+}
+
+#ham{
+	display: none;
+}
