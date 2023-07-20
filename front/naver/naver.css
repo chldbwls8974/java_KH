@@ -821,7 +821,19 @@ header{
 	color: #606060; margin-left: auto; font-size: 1.3rem; line-height: 40px; position: absolute; right: 0;
 }
 
-#container .box-right .box-weather .box-weather-body{height: 183px;}
+
+#container .box-right .box-weather .box-weather-body .weather-body-left{
+	float: left;
+	height: 183px; padding: 20px 0 18px; box-sizing: border-box; 
+}
+#container .box-right .box-weather .box-weather-body .weather-body-right{
+	height: 183px; padding: 20px 0 18px 24px; box-sizing: border-box;
+}
+
+
+
+
+
 
 footer{
 	min-width: 1280px; /* 최소 너비로, 브라우저 작을 때는 1280, 클때는 100% */
