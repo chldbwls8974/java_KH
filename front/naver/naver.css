@@ -251,6 +251,7 @@ header{
 #container{
 	width: 1280px;
 	margin: 0 auto; 
+	padding-bottom: 60px;
 }
 
 #container .box-left>div,
@@ -597,9 +598,17 @@ header{
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .table2 .table + .table{
 	 padding: 0 0 20px 20px;
 }
-#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .img{
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .scaleimg{
 	width: 115px; height: 115px; overflow: hidden; position: relative; display: block; border-radius: 4px;
 }
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .img{
+	width: 115px; height: 115px; position: relative; display: block; border-radius: 4px;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .img:hover{
+	transform: scale(1.028);
+	transition: transform 0.2s;
+}
+
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .shop-text{
 	overflow: hidden; line-height: 20px; letter-spacing: -.8px; white-space: nowrap;
 	font-size: 1.4rem;
@@ -607,30 +616,107 @@ header{
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .shoptext{
 	padding-top: 10px;
 }
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .shoptext:hover{
+	text-decoration: underline;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-left .table:hover .img{
+	transform: scale(1.028);
+	transition: transform 0.2s;
+}
+
 
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right{
 	min-width: 0; display: block; width: 250px; margin-left: auto;
-	font-size: 14px; line-height: 20px;
+	font-size: 14px; line-height: 20px; letter-spacing: -.4px;
 }
-#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top{
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top1,
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top2,
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top3{
+	position: relative; padding-bottom: 5px; letter-spacing: -.4px; font-weight: 500;
+	display: flex; justify-content: space-between;
+}
+/* #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top .top1 .top-item+.top-item{
+	padding-left: 10px;
+} */
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top1 .shop-dot{
+	margin: 9px 8px 0 8px; width: 3px; height: 3px; background-color: #d3d5d7; display: inline-block; border-radius: 50%; vertical-align: top;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top2 .shop-dot,
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-main-right .top3 .shop-dot{
+	margin: 9px 2px 0 2px; width: 3px; height: 3px; background-color: #d3d5d7; display: inline-block; border-radius: 50%; vertical-align: top;
+}
 
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main  a[aria-selected=true]{
+	font-weight: bold;
 }
 /* 각 항목에 내용 보충해줘야함. */
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-top{
-	position: relative; padding: 10px 12px 5px; border-radius: 4px; background-color: rgba(245,248,251,.6); 
+	position: relative; padding: 8px 12px 5px; border-radius: 4px; background-color: rgba(245,248,251,.6); 
+	border: 1px solid rgba(0, 0, 0, .05);
 }
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid{
 	position: relative;
-	margin-top: 11px; padding: 9px 9px 8px; border-radius: 4px; background-color: rgba(245,248,251,.6); 
+	margin-top: 11px; padding: 6px 10px 8px; border-radius: 4px; background-color: rgba(245,248,251,.6); 
+	border: 1px solid rgba(0, 0, 0, .05); text-align: center;
 }
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid a{
+	display: inline-block;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .mid-img,
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .mid-img-ex{
+	width: 32px; height: 32px; position: relative; display: inline-block; border-radius: 50%; background-color: #fff;
+	line-height: 32px; text-align: center; vertical-align: top; margin: 0 10px;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .mid-img::before{
+	content: ''; display: block; position: absolute; top: 50%; left: 50%; width: 32px; height: 32px;
+	background-image: url(../img/naver_icon_2.png); background-size: 122px 106px; transform: translate(-50%, -50%);
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .img1::before{
+	background-position: -34px 0;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .img2{
+	color: #404040; font-size: 1.2rem; width: 32px; height: 32px; background-color: #fff;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .img3::before{
+	background-position: -34px -34px;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .img4::before{
+	background-position: -60px -68px; width: 17px; height: 16px;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-mid .mid-btn .mid-text{
+	margin-top: 4px; font-size: 14px; line-height: 20px; color: #404040;
+}
+
+
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom{
-	display: block; margin-top: 11px;
+	display: block; margin-top: 11px; width: 250px; height: 165px;
+	
 }
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom .bottom-img{
+	width: 250px; height: 135px; overflow: hidden;
+}
+
 #container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom img{
-	vertical-align: top; border: 0; width: 250px; 
+	vertical-align: top; border: 0; width: 250px;  border: 1px solid rgba(0, 0, 0, .06); border-radius: 4px; 
 }
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom img:hover {
+	transform: scale(1.04);
+	transition: transform 0.2s;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom .bottom-text{
+	margin-top: 10px; line-height: 20px; text-align: center; font-size: 1.4rem;
+}
+#container .box-left .box-shopping .box-shopping-body .box-shopping-main .shopping-right-bottom:hover{
+	text-decoration: underline;
+}
+
+
 #container .box-left .box-shopping .box-shopping-page .box-page-right .box-content-page .page-more{
 	color: #9858f5;
+}
+#container .box-left .box-shopping .box-shopping-page  .icon-ad{
+	position: absolute; top: 18px; right: 20px; border: 1px solid #e3e5e8; color: #606060; 
+	width: 30px; border-radius: 4px; font-size: 1.2rem; line-height: 18px; text-align: center;
 }
 
 
@@ -704,12 +790,38 @@ header{
 #container .box-right .box-happybin .text-happybin{
 	font-weight: bold; line-height: 24px;
 }
+
+
 /* 날씨 */
-#container .box-right .-box-weather{
-	padding: 0 18px;
+#container .box-right .box-weather{
+	padding: 0 18px; letter-spacing: -.4px;
+}
+#container .box-right .box-weather .box-weather-top{
+	border-bottom: 1px solid #e3e5e8; height: 40px; padding: 6px 0;
+	position: relative;
+}
+#container .box-right .box-weather .box-weather-top .weather-text-left{
+	float: left;
+}
+#container .box-right .box-weather .box-weather-top .weather-text-left .weather{
+	color: #080808; padding-right: 7px; font-size: 1.5rem; font-weight: 800; vertical-align: top; line-height: 40px;
+}
+#container .box-right .box-weather .box-weather-top .weather-text-left .forecast{
+	border: 1px solid #ebebeb; background-color: #fff; color: #606060; display: inline-block;
+	 min-width: 75px; height: 26px; margin-top: 7px;
+	padding: 0 10px 0 7px; border-radius: 15px; box-sizing: border-box; font-size: 1.1rem; line-height: 25px;
+	vertical-align: top; 
+}
+#container .box-right .box-weather .box-weather-top .weather-text-left .forecast::before{
+	content: ''; display: inline-block; width: 12px; height: 12px; margin: 6px 2px 0 0; vertical-align: top;
+	background-image: url(../img/naver_icon.png); background-size: 422px 405px;
+	background-position: -382px -391px;
+}
+#container .box-right .box-weather .box-weather-top .weather-text-right{
+	color: #606060; margin-left: auto; font-size: 1.3rem; line-height: 40px; position: absolute; right: 0;
 }
 
-
+#container .box-right .box-weather .box-weather-body{height: 183px;}
 
 footer{
 	min-width: 1280px; /* 최소 너비로, 브라우저 작을 때는 1280, 클때는 100% */
