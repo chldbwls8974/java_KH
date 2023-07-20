@@ -29,15 +29,15 @@
 .ham-menu .bar.bar-top{top: 0;}
 .ham-menu .bar.bar-mid{top: 50%; margin-top: -3px;}
 .ham-menu .bar.bar-bottom{bottom: 0;}
-#ham:checked~.bar-top{
+#ham:checked~.ham-menu .bar-top{
 	transform-origin: 0% 0%;
 	transform: rotate(40deg); width: calc(100% * 1.4);
  }
-#ham:checked~.bar-bottom{
+#ham:checked~.ham-menu .bar-bottom{
 	transform-origin: 0% 100%;
 	transform: rotate(-40deg); width: calc(100% * 1.4);
  }
-#ham:checked~.bar-mid{
+#ham:checked~.ham-menu .bar-mid{
 	transform-origin: 0% 0%;
 	transform: scaleY(0);
  }
