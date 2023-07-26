@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이지</title>
+	<style>
+		.box-page{
+			display: flex; justify-content: center;
+		}
+		div{
+			display: inline-block;
+			padding: 0 10px;
+		}
+		.btn{
+			width: 30px; height: 30px; border-radius: 50%;
+			border: 2px solid black; background-color: transparent; cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-page">
+		<button id="pre" class="btn"><</button>
+		<div id="box">
+			<span class="current">1</span>
+			<span class="max">/ 6</span>
+		</div>
+		<button id="next" class="btn">></button>
+	</div>
+	<script>
+		let pageNow = 1;
+		let page = 6;  // const page = 6;
+
+		let pre = document.getElementById('pre');
+		let currentPage = document.querySelector('.current')
+		pre.onclick = function(){
+			pageNow--;
+			if(pageNow == 0){
+				pageNow = 6;
+			}
+			currentPage.innerText = pageNow
+			// pageNow = --pageNow == 0? page : pageNow
+		}
+
+		let next = document.getElementById('next');
+		next.onclick = function(){
+			pageNow++;
+			if(pageNow==7){
+				pageNow =1;
+			}
+			currentPage.innerText = pageNow
+		}
+	</script>	
+
+</body>
+</html>

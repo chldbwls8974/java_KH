@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 30px; background-color: gray;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+		
+		<button class="box-btn">
+			<span>펼치기</span>
+		</button>
+		<div class="box"></div>
+
+	<script>
+	
+		$('.box-btn').click(function(){
+			let text = $(this).text();
+
+			const FOLD = '접기';
+			const UN = '펼치기'
+
+			$('.box').toggle();
+
+			if(text == FOLD ){
+			text = UN;
+			}else{
+				text=FOLD;
+			}
+			$(this).text(text);
+		});
+		
+	</script>
+</body>
+</html>

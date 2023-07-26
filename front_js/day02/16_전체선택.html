@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="all" > 전체선택 <br>
+	<input type="checkbox" name="ch" value="agree">동의1 <br>
+	<input type="checkbox" name="ch" value="agree">동의2 <br>
+	<input type="checkbox" name="ch" value="agree">동의3 <br>
+	<input type="checkbox" name="ch" value="agree">동의4 <br>
+
+	<script>
+	 
+
+	 $('[name=all]').click(function(){
+			let res =	$(this).prop('checked');
+			if(res == true){
+			$('[name=ch]').prop('checked',true);
+		 }
+		 else{
+			$('[name=ch]').prop('checked',false);
+		 }
+	 });
+	 
+	</script>
+</body>
+</html>

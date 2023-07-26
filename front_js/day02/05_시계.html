@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>시계</title>
+	<style>
+		#box{
+			width: 400px; margin: 50px auto; border: 3px solid red;
+			text-align: center; line-height: 50px; height: 50px;
+			font-size: 30px; font-weight: bold; 
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		// 아이디로 지정된 요소는 아이디로 바로 접근 가능
+		let sec = 0;
+		let min = 0;
+		let hour = 0;
+
+		box.innerText = '00:00:00';
+		
+		setInterval(function(){
+			sec++;
+			if(sec == 60){
+				min++;
+				sec = 0;
+			}
+			if(min == 60){
+				hour++;
+				min = 0;
+			}
+			box.innerText = getTime(hour,min,sec);
+		},1000);
+
+		function getTime(hour, min, sec){
+			return ''+ fillZero(hour) + ':' + fillZero(min) + ':' + fillZero(sec);
+		}
+		
+		function fillZero(num){
+			return num < 10 ? '0' + num : num;
+		}
+	</script>
+</body>
+</html>
