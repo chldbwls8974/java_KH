@@ -63,7 +63,9 @@
 			$('.box').show();
 			$('.btn').css('background','none');
 			$(this).css('background',color);
-			//currentPage.innerText =id;
+			//currentPage.innerText =id; 
+			/* queryselector는 후참된 내용에 대해 읽어올 수 없어, 
+			반영시에 새로고침을 해야하므로 버튼을 두번 눌러야하는 오류가 발생 */
 			$('.current').text(id);
 			/* 
 			index() : 요소가 몇번째 요소인지 알려줌
