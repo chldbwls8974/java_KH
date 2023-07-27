@@ -58,7 +58,7 @@
 		
 		$('.btn').click(function(){
 			let color = $(this).prop('value');
-			let id = $(this).prop('id');
+			// let id = $(this).prop('id');
 			$('.box').css('background',color);
 			$('.box').show();
 			$('.btn').css('background','none');
@@ -77,7 +77,7 @@
 		$('.btn-pre').click(function(){
 			page--;
 			currentPage.innerText = page;
-			$('.btn').eq(page-1).click();
+			$('.btn').eq(page-1).click(); //eq
 			if(page<0){
 				page=3;
 			}
