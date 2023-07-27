@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+
+	<style>
+		.box{width: 300px; height: 50px; display: none;}
+		
+
+		.box1{width: 300px; height: 50px; background-color: red;}
+		.box2{width: 300px; height: 50px; background-color: yellow;}
+		.box3{width: 300px; height: 50px; background-color: blue;}
+	</style>
+
+</head>
+<body>
+	<div class="box"></div>
+	<button class="btn btn1" data-target=".box1">버튼1</button>
+	<button class="btn btn2" data-target=".box2">버튼2</button>
+	<button class="btn btn3" data-target=".box3">버튼3</button>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+
+	<script>
+
+		$('.box').hide();
+		$('.btn').click(function(){
+			let target = $(this).attr('data-target');
+			$('.box').hide();
+			$(target).show();
+		});
+
+		// $('.btn1').click(function(){
+		// 	$('.box').show();
+		// 	$('.box').css('background','red');
+			
+		// });
+
+		// $('.btn2').click(function(){
+		// 	$('.box').show();
+		// 	$('.box').css('background','blue');
+		// });
+
+		// $('.btn3').click(function(){
+		// 	$('.box').show();
+		// 	$('.box').css('background','yellow');
+		// });
+
+	</script>
+</body>
+</html>
