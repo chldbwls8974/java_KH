@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 선택 예제</title>
+	<script src="../js/jquery.min.js"></script>
+
+	<style>
+		.container{
+			text-align: center; 
+		}
+		.box{
+			height: 100px; background-color: black; display: none;
+			margin-top: 5px;
+		}
+		.btn{
+			background: none; cursor: pointer;
+		}
+		.box-btn{
+			padding-top:10px; font-size: 15px; font-weight: bold; text-align: center; 
+			position: relative;
+		}
+		.btnB{
+			border: 2px solid black; border-radius: 50%; width: 30px; height: 30px;
+			cursor: pointer;
+		}
+		.clearall{
+			position: absolute; right: 0; width: 80px; border-radius: 0;  
+		}
+		.page{
+			color: rgb(70, 70, 70); font-weight: 200;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<button class="btn btn1" id="1" value="red">버튼1</button>
+		<button class="btn btn2" id="2" value="blue">버튼2</button>
+		<button class="btn btn3" id="3" value="yellow">버튼3</button>
+	</div>
+	
+		<div class="box-btn">
+			<button class="btnB btn-pre"><</button>
+			<span class="current">1</span> <span class="page">/ 3</span>
+			<button class="btnB btn-next">></button>
+			<button class="btnB clearall">초기화</button>
+		</div>
+
+	
+
+	<div class="box"></div>
+	
+
+	<script>
+		let page=1;
+		let currentPage = document.querySelector('.current');
+		
+		$('.btn').click(function(){
+			let color = $(this).prop('value');
+			let id = $(this).prop('id');
+			$('.box').css('background',color);
+			$('.box').show();
+			$('.btn').css('background','none');
+			$(this).css('background',color);
+			//currentPage.innerText =id;
+			$('.current').text(id);
+			/* 
+			index() : 요소가 몇번째 요소인지 알려줌
+			*/
+			// page=$(this).index()+1;
+			// currentPage.innerText = page;
+		});
+
+		$('.btn-pre').click(function(){
+			page--;
+			currentPage.innerText = page;
+			$('.btn').eq(page-1).click();
+			if(page<0){
+				page=3;
+			}
+			});
+
+		$('.btn-next').click(function(){
+			page++;
+			currentPage.innerText = page
+			$('.btn').eq(page-1).click();
+			if(page>2){
+				page=0;
+			}
+		});
+
+		$('.clearall').click(function(){
+			$('.box').hide();
+			$('.btn').css('background','none');
+		});
+
+	</script>
+</body>
+</html>
