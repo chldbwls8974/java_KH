@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 300px; display: none; margin-top: 10px;
+		}
+		.bg-blue{background-color: aquamarine;}
+		.bg-orange{background-color: orange;}
+	</style>
+</head>
+<body>
+	<button class="btn bg-blue" value="bg-blue">버튼1</button>
+	<button class="btn bg-orange" value="bg-orange">버튼2</button>
+	<div class="box"></div>
+
+	<script>
+	
+		$('.btn').click(function(){
+			let color = $(this).val();
+			$('.box').show();
+			console.log(color);
+			$('.box').removeAttr('class').addClass('box');
+			$('.box').addClass(color);
+		});
+	
+	</script>
+</body>
+</html>

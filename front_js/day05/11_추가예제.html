@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{position: relative; width: 210px; margin-top: 10px;}
+		.submit{position: absolute; right: 0; margin-top: 10px;}
+		.que , .ans{width: 200px;}
+		.ans{height: 100px; }
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+		<button class="btn-add">질문추가</button>
+		<div class="box">
+			<input type="text" class="que" placeholder="질문"><br>
+			<textarea placeholder="답변내용" id="" cols="30" rows="10"></textarea>
+			<button type="submit" class="submit">질문등록</button>
+		</div>
+	</div>
+
+	<script>
+		$('.btn-add').click(function(){
+			let add =
+				`<input type="text" class="que" placeholder="질문"><br>
+				<textarea placeholder="답변내용" id="" cols="30" rows="10"></textarea>`;
+			$('.submit').before(add);
+		});
+	</script>
+</body>
+</html>

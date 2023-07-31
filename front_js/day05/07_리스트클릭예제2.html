@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		li{padding-top: 10px; cursor: pointer;}
+		.bg-yellow{background-color: yellow;}
+		.bg-orange{background-color: orange;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="#">항목1</a></li>
+		<li><a href="#">항목2</a></li>
+		<li><a href="#">항목3</a></li>
+		<li><a href="#">항목4</a></li>
+		<li><a href="#">항목5</a></li>
+		<li><a href="#">항목6</a></li>
+		<li><a href="#">항목7</a></li>
+	</ul>
+
+
+	<script>
+
+		$('a').click(function(){
+			$('li').removeClass('bg-yellow bg-orange');
+			$(this).parent().addClass('bg-yellow')
+			$(this).parent().prev().addClass('bg-orange');
+			$(this).parent().next().addClass('bg-orange');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.btn{display: block;}
+	</style>
+</head>
+<body>
+	<button class="btn">추가</button>
+	<div class="box"></div>
+
+	<script>
+		/* $(document).on('click','.btn',function(){
+			let el =
+			`<input type="text"><br>`;
+			$(this).after(el);
+
+		}); */
+
+		//append 이용. 텍스트가 밑으로 추가됨.
+	/* 	$('.btn').click(function(){
+			let el =
+			`<input type="text"><br>`;
+			$('.box').append(el);
+		}); */
+
+		//after이용. 버튼 밑에 텍스트가 추가되며 기존 텍스트들이 밑으로 밀림
+	/* 	$('.btn').click(function(){
+			let el =
+			`<input type="text"><br>`;
+			$(this).after(el);
+		}) */
+
+		//befor이용. 텍스트가 밑으로 추가됨
+	/* 	$('.btn').click(function(){
+			let el =
+			`<input type="text"><br>`;
+			$('.box').before(el);
+		}) */
+
+		// html 이용.. 새로고침되어 추가됨.
+		$('.btn').click(function(){
+			let el =
+			`<input type="text"><br>`;
+			let html = $('.box').html();
+			$('.box').html(html + el);
+		})
+
+	</script>
+</body>
+</html>
