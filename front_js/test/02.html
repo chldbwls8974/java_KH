@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입02</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="../js/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.js"></script>
+	<style>
+		form{
+			width: 500px; border: 1px solid rgb(161, 161, 161);
+			padding: 50px 30px 10px 30px; background-color: rgb(228, 228, 228);
+		}
+		[class^=error]{
+			color: red; margin-bottom: 10px;
+		}
+		[class^=form]{display: flex;}
+		[class$=control]{
+			border-style: none; border-bottom: 2px dashed black; background-color: transparent;
+		}
+		[class$=control]:focus {outline: 0; background-color: transparent;}
+		.form-group label{width: 200px; padding-top: 10px; font-weight: 600;}
+		.email{width: calc((100% - 30px) / 2);}
+		.alert-pw{font-size: 8px; color: gray;}
+		.btn{
+			height: 50px; background-color: rgb(188, 243, 174); border: 0; color: rgb(44, 85, 33);
+			font-weight: bold;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<form action="">
+			<div class="form-group">
+				<label for="id">아이디</label>
+				<input type="text" class="form-control" name="id">
+			</div>
+			<label class="error" id="error-id"></label>
+
+			<div class="form-group">
+				<label for="pw">패스워드</label>
+				<input type="password" class="form-control" name="pw" id="password">
+			</div>
+			<div class="alert-pw">
+					<span>영문자 대/소문자 특수문자, 숫자 포함 8~12자</span>
+			</div>
+			
+			<label class="error" id="error-pw"></label>
+
+			<div class="form-group">
+				<label for="pw2">패스워드 확인</label>
+				<input type="password" class="form-control" name="pw2">
+			</div>
+			<label class="error" id="error-pw2"></label>
+
+			<div class="form-group">
+				<label for="">이메일</label>
+				<input type="text" class="email form-control" name="email1">@
+				<input type="text" class="email form-control" name="email2">
+			</div>
+
+			<div class="form-group">
+				<label for="address">주소</label>
+				<input type="text" class="form-control" name="address">
+			</div>
+			<label class="error" id="error-address"></label>
+			<button class="btn btn-outline-success col-12">가 입</button>
+		</form>
+	</div>
+	<script>
+		$('.alert-pw').hide();
+			$('[name=pw]').click(function(){
+				$('.alert-pw').show();
+			})
+
+				let option = {
+			// relues : 유효성 판변을 위한 규칙, 최소길이, 최대길이, 정규표현식, 값비교(비번), 이메일
+			rules : {
+				/* name : {}*/
+				id : {
+					required : true,
+				},
+				pw : {
+					required : true,
+				}, 
+				pw2 : {
+					required : true,
+					equalTo : password
+				}
+			},
+			messages : {
+				id : {
+					required : '필수 입력 항목입니다.',
+				},
+				pw : {
+					required : '필수 입력 항목입니다.',
+				}, 
+				pw2 : {
+					required : '필수 입력 항목입니다.',
+					equalTo : '비밀번호와 일치하지 않습니다.'
+				}
+			
+			}
+		};
+		$("form").validate(option);
+
+		$.validator.addMethod(
+			"regex",
+			function(value, element, regexp) {
+				var re = new RegExp(regexp);
+				return this.optional(element) || re.test(value);
+			},
+			"Please check your input."
+		);
+	</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box +.box{border-top: 1px solid rgb(139, 139, 139);	margin-bottom: 10px;}
+		fieldset{margin-top: 10px; padding-left: 20px;}
+		.box2{display: flex;}
+		table {
+			margin-top: 10px;
+			font-size: 11px; line-height: 8px;
+			width: 100%; background-color: rgb(255, 252, 204);
+		}
+
+		th{padding: 6px; color: white; background-color: rgb(255, 126, 87);}
+		td{
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 5px;
+		}
+		td:nth-child(2){width: 50%;}
+		td:nth-child(3){padding: 0;}
+		input{margin-bottom: 5px; width: 300px;}
+		.btn-submit{width: auto;}
+		.content{height: 100px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1">
+			<h1>포트폴리오 문제</h1>
+		</div>
+
+		<div class="box box2">
+			<form action="insert.no" method="post">		
+				<fieldset>
+				<legend>공지사항 작성하기</legend>
+		
+					<div class="form-title">
+						<label for="title">제목
+							<input type="text" name="title" placeholder="제목을 입력하시오.">
+						</label><br>
+					</div>
+					<div class="form-content">
+						<label for="content">내용
+							<input type="text" name="content" class="content" placeholder="내용을 입력하시오."></textarea>
+						</label><br>
+					</div>
+					<div class="form-uploadFile">
+						<label for="file">첨부파일
+							<input type="file" name="uploadFile" onchange="readUrl(this)">
+							<div class="box-thumbnail">
+								<img src="" id="preview" height="100" width="auto">
+							</div>
+						</label>
+					</div>
+					<div class="form-btn">
+						<input type="submit" class="btn-submit" value="작성하기">
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="box box3">
+			<table>
+				<thead>
+					<tr> 
+						<th> 번호 </th>
+						<th colspan="2"> 제목 </th>
+						<th> 작성자</th>
+						<th> 작성일</th>
+						<th> 조회수</th>
+					</tr>
+				</thead>
+		
+				<tbody>
+					<tr>
+						<td>9</td>
+						<td>공지사항 제목 9</td>
+						<td>
+							<button class="btn-togo">바로가기</button>
+						</td>
+						<td>user01</td>
+						<td>2021-03-29</td>
+						<td>34</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>공지사항 제목 6</td>
+						<td>
+							<button class="btn-togo">바로가기</button>
+						</td>
+						<td>answ445</td>
+						<td>2021-03-12</td>
+						<td>67</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>공지사항 제목 3</td>
+						<td>
+							<button class="btn-togo">바로가기</button>
+						</td>
+						<td>testg12</td>
+						<td>2021-03-01</td>
+						<td>98</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>공지사항 제목 2</td>
+						<td>
+							<button class="btn-togo">바로가기</button>
+						</td>
+						<td>palwe3</td>
+						<td>2021-01-02</td>
+						<td>85</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>공지사항 제목 1</td>
+						<td>
+							<button class="btn-togo">바로가기</button>
+						</td>
+						<td>xml23</td>
+						<td>2020-12-24</td>
+						<td>124</td>
+					</tr>
+				</tbody>
+		
+				<tfoot>
+					<tr>
+						<th colspan="4">전체공지사항 갯수</th>
+						<th colspan="2">5개</th>
+					</tr>
+			</tfoot>
+			</table>
+		</div>
+	</div>
+
+
+	<script>
+			function readUrl(input){
+			//input 태그가 첨부파일이고, 첨부파일이 선택되면
+			if(input.files && input.files[0]){
+				let reader = new FileReader();
+				reader.onload = function(e){
+					document.getElementById('preview').src = e.target.result;
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+			//첨부파일이 선택되지 않으면
+			else{
+				document.getElementById('preview').src = '';
+			}
+		}
+	</script>
+</body>
+</html>
