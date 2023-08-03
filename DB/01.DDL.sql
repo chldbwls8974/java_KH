@@ -33,7 +33,7 @@ if exists db명 : db명이 존재할 때 작업
 */
  
  create schema if not exists course;
- -- drop schema if exists course;
+-- drop schema if exists course;
  
  /*
  use DB명 : DB명을 선택 워크벤치에서는 해당 DB를 더블클릭하면 글자가 두껍게 변함.

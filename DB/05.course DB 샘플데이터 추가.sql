@@ -29,7 +29,7 @@ values('MSC001','대학수학기초',3,4),
 ('BSE001','영어',2,3),
 ('BSE002','글쓰기',2,3),
 ('COM001','컴퓨터개론',3,4),
-('MED001','미디어개론',3,4subjectsubject);
+('MED001','미디어개론',3,4);
 
 
 insert into course(num, subject_code, student_num, schedule, year, semester) 
