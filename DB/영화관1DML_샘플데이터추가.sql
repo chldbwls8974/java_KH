@@ -1,0 +1,176 @@
+USE CGV;
+
+-- 관리자 등록
+-- 아이디 : admin, 비번 : admin, 이름 : 관리자, 번호 : 01011112222 생일 : 2000-01-01
+-- 권환 : ADMIN
+INSERT INTO MEMBER VALUES('ADMIN','ADMIN','관리자','01011112222','2000-01-01','ADMIN');
+
+-- 관리자가 영화 오펜하이머가 등록하기 전에 사전에 해야하는 작업을 쿼리로 작성
+INSERT INTO AGE VALUES('전체관람가');
+INSERT INTO AGE VALUES('12세 이상 관람가');
+INSERT INTO AGE VALUES('15세 이상 관람가');
+INSERT INTO AGE VALUES('청소년 관람불가');
+INSERT INTO AGE VALUES('제한 상영가');
+
+INSERT INTO GENRE VALUES('스릴러'),('드라마'),('멜로'),('코미디'),('SF');
+INSERT INTO GENRE VALUES('공포'),('어드벤쳐'),('액션');
+INSERT INTO GENRE VALUES('판타지');
+INSERT INTO GENRE VALUES('범죄');
+INSERT INTO GENRE VALUES('전쟁');
+
+INSERT INTO COUNTRY VALUES('미국'),('영국'),('일본'),('한국');
+-- 다른 데이터베이스 테이블에 있는 데이터를 가져와서 추가하는 쿼리 
+-- INSERT INTO COUNTRY SELECT COUNTRY FROM SAKILA.COUNTRY;
+
+-- 등록되지 않은 영화인은 등록하고, 이미 등록되어 있으면 생략
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('크리스토퍼 놀란','1970-07-30','영국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('킬리언 머피','1976-05-25','영국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('에밀리 블런트','1983-02-23','영국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('멧 데이먼','1970-10-08','미국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('로버트 다우니 주니어','1965-04-04','미국');
+
+INSERT INTO FILE(FI_NAME,FI_STATE) VALUES('OPPENHEIMER_POSTER.JPG','메인포스터');
+INSERT INTO FILE(FI_NAME,FI_STATE) VALUES('OPPENHEIMER_trailler1.JPG','오펜하이머트레일러1'),('OPPENHEIMER_trailler2.JPG','오펜하이머트레일러2'),('OPPENHEIMER_trailler3.JPG','오펜하이머트레일러3');
+INSERT INTO FILE(FI_NAME,FI_STATE) VALUES('OPPENHEIMER_still1.JPG','오펜하이머스틸컷1'),('OPPENHEIMER_still2.JPG','오펜하이머스틸컷2'),('OPPENHEIMER_still3.JPG','오펜하이머스틸컷3');
+
+
+INSERT INTO `MOVIE`(MO_TITLE, MO_TITLE_ENG, MO_OPENING_DATE, MO_RUNNING_TIME, MO_PLOT, MO_FI_NUM, MO_AGE_NAME)
+VALUES('오펜하이머','Oppenheimer','2023-08-15','180','세상을 구하기 위해 세상을 파괴할 지도 모르는 선택을 해야하는 천재과학자의 핵개발 프로젝트.' ,1,'15세 이상 관람가');
+
+INSERT INTO MOVIE_GENRE(MG_GR_NAME,MG_MO_NUM) VALUES('스릴러',1),('드라마',1);
+INSERT INTO ROLE(RO_ROLE,RO_MO_NUM,RO_FP_NUM) VALUES('감독',1,1),('배우',1,2),('배우',1,3),('배우',1,4),('배우',1,5);
+INSERT INTO COUNTRY_PRODUCT(CP_C_NAME,CP_MO_NUM) VALUES('미국',1),('영국',1);
+INSERT INTO MOVIE_FILE(MF_FI_NUM,MF_MO_NUM) VALUES(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1);
+
+
+-- 영화 콘크리트 유토피아 등록
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('엄태화','1981-01-01','한국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('이병헌','1970-07-12','한국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('박서준','1988-12-16','한국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('박보영','1990-02-12','한국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('김선영','1976-04-10','한국');
+INSERT INTO FILM_PERSON(FP_NAME,FP_BIRTH,FP_C_NAME) VALUES('박지후','2003-11-07','한국');
+
+INSERT INTO FILE(FI_NAME,FI_STATE) VALUES('콘크리트유토피아_메인포스터.jpg','메인포스터');
+INSERT INTO FILE(FI_NAME,FI_STATE) VALUES('콘크리트유토피아_스틸컷1.jpg','스틸컷'),('콘크리트유토피아_스틸컷2.jpg','스틸컷'),('콘크리트유토피아_스틸컷3.jpg','스틸컷');
+INSERT INTO FILE(FI_NAME,FI_STATE) VALUES('콘크리트유토피아_트레일러1.mp4','트레일러'),('콘크리트유토피아_스틸컷2.jpg','트레일러');
+
+INSERT INTO `MOVIE`(MO_TITLE, MO_TITLE_ENG, MO_OPENING_DATE, MO_RUNNING_TIME, MO_PLOT, MO_FI_NUM, MO_AGE_NAME)
+VALUES('콘크리트 유토피아','Concrete Utopia','2023-08-09','130','아파트는 주민의 것.' ,13,'15세 이상 관람가');
+INSERT INTO MOVIE_GENRE(MG_GR_NAME,MG_MO_NUM) VALUES('드라마',2);
+INSERT INTO ROLE(RO_ROLE,RO_MO_NUM,RO_FP_NUM) VALUES('감독',2,6),('배우',2,7),('배우',2,8),('배우',2,9),('배우',2,10);
+INSERT INTO ROLE(RO_ROLE,RO_MO_NUM,RO_FP_NUM) VALUES('배우',2,11);
+INSERT INTO COUNTRY_PRODUCT(CP_C_NAME,CP_MO_NUM) VALUES('한국',2);
+INSERT INTO MOVIE_FILE(MF_FI_NUM,MF_MO_NUM) VALUES(8,2),(9,2),(10,2),(11,2);
+INSERT INTO MOVIE_FILE(MF_FI_NUM,MF_MO_NUM) VALUES(12,2);
+
+
+
+-- 영화관 등록을 위해 사전에 해야하는 작업
+INSERT INTO REGION VALUES('서울'),('경기'),('인천'),('강원'),('대전/충청'),('대구'),('부산/울산'),('경상'),('광주/전라/제주');
+
+INSERT INTO `THEATER`(TH_NAME,TH_ADDR,TH_RE_NAME,TH_TOTAL_SCREEN,TH_TOTAL_SEAT)
+VALUES('강남','서울시 강남구 역삼동 814-6 스타플렉스','서울',6,874),
+('강변','서울시 광진구 구의동 546-4 테크노마트 10층','서울',11,1466),
+('건대입구','서울시 광진구 자양동 9-4 몰오브케이 3층','서울',5,754),
+('구로','서울시 구로구 구로5동 573번지 NC신구로점 6층','서울',8,1232),
+('경기광주','경기도 광주시 중앙로89 2층','경기',8,1202),
+('고양백석','경기도 고양시 일산동구 중앙로 1036 고양종합터미널 5~7F','경기',7,1130),
+('계양','인천광역시 계양구 작전동 899-1 메트로몰 8층','인천',8,1257);
+
+INSERT INTO SCREEN(SC_NAME,SC_TOTAL_SEAT,SC_TH_NUM)
+VALUES('1관 6층',158,1),('2관 LCK관 6층',124,1),('3관 8층',172,1),('4관 8층',124,1),('5관 10층',172,1),('6관 10층',124,1),
+('1관 3층',140,3),('2관 3층',153,3),('3관 4층',151,3),('4관 4층',127,3),('5관 4층',183,3);
+
+INSERT INTO SEAT(SE_NAME,SE_ROW,SE_COL,SE_STATE,SE_SC_NUM)
+VALUES('A1','A','1','커플',1),('A2','A','2','커플',1),('A3','A','3','커플',1),('A4','A','4','커플',1),
+('B1','B','1','일반',1),('B2','B','2','일반',1),('B3','B','3','일반',1),
+('C1','C','1','일반',1),('C2','C','2','일반',1),('C3','C','3','일반',1),
+('A1','A','1','일반',2),('A2','A','2','일반',2),('A3','A','3','일반',2),('A4','A','4','일반',2),
+('B1','B','1','일반',2),('B2','B','2','일반',2),('B3','B','3','일반',2),('B4','B','4','일반',2),
+('C1','C','1','일반',2),('C2','C','2','일반',2),('C3','C','3','일반',2),('C4','C','4','일반',2),
+('D1','D','1','커플',2),('D2','D','2','커플',2),('D3','D','3','커플',2),('D4','D','4','커플',2);
+
+
+-- 영화 스케줄 추가
+-- 강남 영화관 영화 스케줄 날짜 8월 16일
+-- 오펜하이머 1관 9 12:30 16 19:30 23
+
+INSERT INTO SCHEDULE(SD_MO_NUM,SD_SC_NUM,SD_DATE,SD_START_TIME,SD_END_TIME,SD_POSSIBLE_SEAT,SD_DC)
+VALUES(1,1,'2023-08-16','2023-08-16 09:00','2023-08-16 12:10',10,'Y');
+INSERT INTO SCHEDULE(SD_MO_NUM,SD_SC_NUM,SD_DATE,SD_START_TIME,SD_END_TIME,SD_POSSIBLE_SEAT)
+VALUES(1,1,'2023-08-16','12:30','15:40',10),
+(1,1,'2023-08-16','16:00','19:10',10),
+(1,1,'2023-08-16','19:30','22:40',10),
+(1,1,'2023-08-16','23:00','26:10',10);
+
+-- 콘크리트 유포피아 2관 10:10 12:50 18:10 20:50 23:30
+INSERT INTO SCHEDULE(SD_MO_NUM,SD_SC_NUM,SD_DATE,SD_START_TIME,SD_END_TIME,SD_POSSIBLE_SEAT,SD_DC)
+VALUES(2,2,'2023-08-16','10:10','12:30',14,'Y');
+INSERT INTO SCHEDULE(SD_MO_NUM,SD_SC_NUM,SD_DATE,SD_START_TIME,SD_END_TIME,SD_POSSIBLE_SEAT)
+VALUES(2,2,'2023-08-16','12:50','15:10',14),
+(2,2,'2023-08-16','18:10','20:30',14),
+(2,2,'2023-08-16','20:50','23:10',14),
+(2,2,'2023-08-16','23:30','25:50',14);
+
+-- 종료시간을 직접 계산하지 않고, 내장함수와 러닝타임을 이용하여 작성하는 쿼리
+/*
+INSERT INTO SCHEDULE(SD_MO_NUM,SD_SC_NUM,SD_DATE,SD_START_TIME,SD_END_TIME,SD_POSSIBLE_SEAT,SD_DC)
+SELECT 1,1,'2023-08-16','09:00:00',RIGHT(ADDDATE('2023-08-16 09:00:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8),10,
+CASE WHEN '09:00'<='12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 1;
+*/
+
+
+-- 예매를 위해 사전에 해야하는 작업
+INSERT INTO PRICE(PR_TYPE,PR_PRICE,PR_DC_PRICE) VALUES('성인',14000,12000),('아동',11000,9000);
+
+-- 회원추가 
+INSERT INTO MEMBER VALUES('abc123','abc123','홍길동','01112345678','2000-01-05','USER');
+
+-- abc123이 강남에서 20:50에 시작하는 콘크리트 유토피아 를 성인 2명으로 A1,A2예매
+INSERT INTO RESERVATION (RV_NUM,RV_ADULT,RV_CHILD,RV_ME_ID,RV_SD_NUM,RV_PRICE)
+SELECT '202308091614MS008001',2,0,'abc123',8, PR_PRICE *2
+FROM PRICE
+WHERE PR_TYPE='성인';
+
+-- 조조인지 아닌지도 검색해서 작성하는 쿼리
+-- 작성할것. 
+
+INSERT INTO RESERVATION_LIST(RL_RV_NUM,RL_SE_NUM,RL_PR_NUM) VALUES('202308091614MS008001',11,1);
+INSERT INTO RESERVATION_LIST(RL_RV_NUM,RL_SE_NUM,RL_PR_NUM) VALUES('202308091614MS008001',12,1);
+
+UPDATE SCHEDULE
+SET SD_POSSIBLE_SEAT = SD_POSSIBLE_SEAT-2
+WHERE SD_NUM = 8;
+
+UPDATE MOVIE
+SET MO_RESERVATION_RATE 
+= ROUND((SELECT SUM(RV_ADULT + RV_CHILD)
+FROM RESERVATION
+JOIN SCHEDULE
+ON RV_SD_NUM = SD_NUM
+WHERE SD_MO_NUM=2)
+/
+(SELECT SUM(RV_ADULT + RV_CHILD)
+FROM RESERVATION
+JOIN SCHEDULE
+ON RV_SD_NUM = SD_NUM)*100)
+WHERE MO_NUM = 2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

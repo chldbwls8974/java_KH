@@ -137,7 +137,8 @@ CREATE TABLE `member` (
 	`me_pw`	varchar(20)	NOT NULL,
 	`me_name`	varchar(20)	NOT NULL,
 	`me_phone`	varchar(13)	NOT NULL,
-	`me_birth`	date	NOT NULL
+	`me_birth`	date	NOT NULL,
+    `me_authority` varchar(5) NOT NULL DEFAULT 'USER'
 );
 
 DROP TABLE IF EXISTS `reservation`;
