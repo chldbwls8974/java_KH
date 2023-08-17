@@ -1,0 +1,53 @@
+-- 도서 대출 시 트리거 작성
+-- 해당 도서를 대출할 때 예약 내역이 있으면 예약 테이블에 데이터를 삭제하고, 도서의 예약 상태를 예약 가능으로 수정
+-- 도서 대출 상태를 대출중으로 수정
+-- 회원이 대출한 도서 수 증가 
+
+
+DROP TRIGGER IF EXISTS INSERT_LOAN;
+
+DELIMITER //
+CREATE TRIGGER INSERT_LOAN AFTER INSERT ON LOAN
+FOR EACH ROW
+BEGIN
+	--  NEW.LO_ME_ID 회원이 도서 NEW.LO_BO_NUM 을 예약했으면 
+	IF (
+		SELECT 
+			COUNT(*)
+        FROM
+			RESERVATION
+        WHERE 
+			RE_ME_ID = NEW.LO_ME_ID AND 
+            RE_BO_NUM = NEW.LO_BO_NUM ) > 0 
+	THEN 
+		DELETE FROM RESERVATION WHERE RE_ME_ID = NEW.LO_ME_ID AND RE_BO_NUM = NEW.LO_BO_NUM;
+        
+        UPDATE 
+			BOOK
+		SET 
+			BO_POSSIBLE_RESERV = (SELECT BS_NUM FROM BOOK_STATE WHERE BS_DESC = '예약 가능')
+		WHERE 
+			BO_NUM = NEW.LO_BO_NUM;
+    END IF;
+    
+    UPDATE
+		BOOK
+	SET 
+		BO_POSSIBLE_LOAN = (SELECT BS_NUM FROM BOOK_STATE WHERE BS_DESC = '대출 중')
+	WHERE 
+		BO_NUM = NEW.LO_BO_NUM;
+    
+    UPDATE 
+		MEMBER
+	SET 
+		ME_BOOK_COUNT = ME_BOOK_COUNT + 1
+	WHERE 
+		ME_ID = NEW.LO_ME_ID;
+END //
+DELIMITER ;
+
+INSERT INTO LOAN(LO_ME_ID, LO_BO_NUM, LO_DATE, LO_EXPECTED_DATE)
+VALUES('QWE123', '500.abc123 v1 1', DATE_FORMAT(NOW(),'%Y-%m-%d'), adddate(NOW(), interval 14 day));
+
+INSERT INTO LOAN(LO_ME_ID, LO_BO_NUM, LO_DATE, LO_EXPECTED_DATE)
+VALUES('ADMIN', '103.987DD', DATE_FORMAT(NOW(),'%Y-%m-%d'), adddate(NOW(), interval 14 day));
