@@ -48,10 +48,10 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public boolean deleteBoard(String title, String id) {
+	public boolean deleteBoard(int index, String title, String id) {
 		// 게시글 삭제
 		BoardVO board = boardDao.getBoard(title);
-		if(board != null && board.getBo_me_id().equals(id)) {
+		if(board != null && board.getBo_me_id().equals(id) && board.getBo_number() == index) {
 			boardDao.deleteBoard(title);
 			session.commit();
 			return true;

@@ -55,12 +55,14 @@ public class BoardController {
 	private void deleteBoard() {
 		// 게시글 삭제
 		// 삭제할 게시글.. 제목으로 삭제
+		System.out.print("삭제할 게시글 번호 : ");
+		int index = sc.nextInt();
 		System.out.print("삭제할 제목을 입력 :");
 		sc.next();
 		String title = sc.nextLine();
 		System.out.print("작성자 아이디 : ");
 		String id = sc.next();
-		if(boardService.deleteBoard(title,id)) {
+		if(boardService.deleteBoard(index, title,id)) {
 			System.out.println("[게시글 삭제 성공]");
 		}else {
 			System.out.println("[게시글 삭제 실패]");

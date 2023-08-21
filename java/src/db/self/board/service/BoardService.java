@@ -10,5 +10,5 @@ public interface BoardService {
 
 	ArrayList<BoardVO> getBoardList();
 
-	boolean deleteBoard(String title, String id);
+	boolean deleteBoard(int index, String title, String id);
 }
