@@ -7,6 +7,7 @@
  */
  
  create user 'test'@'localhost' identified  by '1234';
+  create user 'test1'@'localhost' identified  by '1234';
  
  /*
  권한부여 : 계정에 DB 및 테이블에 접근할 수 있는 권한을 설정 
@@ -17,4 +18,27 @@
  모든작업을 수행할 수 잇는 권한을 부여하는 방법
  GRANT ALL PRIVILEGES ON DB명.테이블명 TO '아이디'@'접근방법'; 
  */
- grant all privileges on test.* to 'test'@'localhost';
+grant all privileges on test.* to 'test'@'localhost';
+grant insert on test.* to 'test1'@'localhost';
+grant select on test.* to 'test1'@'localhost';
+grant delete on test.* to 'test1'@'localhost';
+
+
+SELECT EMP_NAME, EMP_NO, DEPT_CODE, SALARY
+
+FROM EMPLOYEE
+
+WHERE DEPT_CODE='D9' OR DEPT_CODE='D6' AND SALARY > 3000000 -- 300 만원 이상 , 코드 in
+
+AND EMAIL LIKE '____%' AND BONUS IS NULL; -- 성별 남성 , 보너스가 있고 , 이메일 주소
+
+
+
+
+
+
+
+
+
+
+
