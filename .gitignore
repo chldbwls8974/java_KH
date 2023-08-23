@@ -31,3 +31,7 @@ book_example/.project
 DB/개인쇼핑몰_ERD_files/github_login_button.css
 DB/개인쇼핑몰_ERD_files/google_login_button.css
 DB/개인쇼핑몰_ERD_files/icon
+.classpath
+.project
+.settings/
+META-INF/
