@@ -28,9 +28,7 @@ book_example/.classpath
 book_example/.project
 /bin/
 /.metadata/
-DB/개인쇼핑몰_ERD_files/github_login_button.css
-DB/개인쇼핑몰_ERD_files/google_login_button.css
-DB/개인쇼핑몰_ERD_files/icon
+
 .classpath
 .project
 .settings/

@@ -23,7 +23,7 @@ public class BoardServiceImp implements BoardService {
 		try {
 			InputStream is = Resources.getResourceAsStream(MYBATIS_CONFIG_PATH);
 			SqlSessionFactory sf = new SqlSessionFactoryBuilder().build(is);
-			// true ¿ªÇÒ : Äõ¸® ½ÇÇà ÈÄ ÀÚµ¿À¸·Î Ä¿¹ÔµÇ°Ô ÇØÁÜ. 
+			// true ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ÔµÇ°ï¿½ ï¿½ï¿½ï¿½ï¿½. 
 			SqlSession session = sf.openSession(true);
 			boardDao = session.getMapper(BoardDAO.class);
 			memberDao = session.getMapper(MemberDAO.class);
@@ -31,27 +31,45 @@ public class BoardServiceImp implements BoardService {
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	public boolean boardinsert(BoardVO board) {
-		if(board == null || board.getBo_title() == null || board.getBo_me_id() == null) {
-			return false;
-		}
-		
-		// ÀÛ¼ºÀÚ°¡ È¸¿øÀÌ ¸Â´ÂÁö È®ÀÎ
-		MemberVO member = memberDao.selectMember(board.getBo_me_id());
-		if(member == null) {
-			return false;
-		}
-		
-		boardDao.insertBoard(board);
-		return true;
-
-	}
+ 
 
 	@Override
 	public ArrayList<BoardVO> getBoardList() {
 		return boardDao.selectBoardList();
+	}
+
+	@Override
+	public BoardVO getBoard(int bo_num) {
+		return boardDao.selectBoard(bo_num);
+	}
+
+	@Override
+	public boolean deleteBoard(int bo_num) {
+		return boardDao.deleteBoard(bo_num) != 0;
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO board) {
+		if(board==null || board.getBo_title()== null) {
+			return false;
+		}
+		
+		return boardDao.updateBoard(board) != 0;
+	}
+
+
+	@Override
+	public boolean insertBoard(BoardVO board) {
+		if(board == null || board.getBo_me_id() == null || board.getBo_title() == null) {
+			return false;
+		}
+		//ì‘ì„±ìê°€ íšŒì›ì´ ë§ëŠ”ì§€ í™•ì¸ 
+		MemberVO member = memberDao.selectMember(board.getBo_me_id());
+		if(member == null) {
+			return false;
+		}
+		boardDao.insertBoard(board);
+		return true;
 	}
 
 

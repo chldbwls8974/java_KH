@@ -15,7 +15,6 @@ import kr.kh.app.vo.BoardVO;
 public class List extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService boardService = new BoardServiceImp();
-    private ArrayList<BoardVO> boardList = boardService.getBoardList();
 
     public List() {
         super();
@@ -23,8 +22,8 @@ public class List extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setAttribute("list",boardList);
+		ArrayList<BoardVO> list = boardService.getBoardList();
+		request.setAttribute("list",list);
 		request.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(request,response);
 	}
 

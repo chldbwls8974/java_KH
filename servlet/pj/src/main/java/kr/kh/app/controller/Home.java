@@ -21,25 +21,23 @@ public class Home extends HttpServlet {
 
 
 	public void init(ServletConfig config) throws ServletException {
-		System.out.println("init ½ÇÇà");
 	}
 
 	
 	public void destroy() {
-		System.out.println("distroy ½ÇÇà");
 	}
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ¼­¹ö¿¡¼­ È­¸é¿¡°Ô µ¥ÀÌÅÍ¸¦ Àü¼Û
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 		request.setAttribute("msg","Hello");
-		// ¹Ì¸® ¸¸µé¾î³õÀº home.jsp¿Í ¿¬°á
+		// ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ home.jspï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request,response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// È­¸é¿¡¼­ º¸³½ id¸¦ °¡Á®¿È
+		// È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String id = request.getParameter("id");
 		System.out.println(id);
 		doGet(request, response);
