@@ -5,24 +5,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/")
 	public String home(Model model) {
-		// È­¸é¿¡ µ¥ÀÌÅÍ¸¦ Àü¼ÛÇÏ´Â ¹æ¹ı model¿¡ ´ã¾Æ¼­ Àü¼Û
-		// model.addAllAttributes("È­¸é¿¡¼­ »ç¿ëÇÒ ÀÌ¸§",Àü¼ÛÇÒ°ª);
-		model.addAttribute("name","abc");
+		//í™”ë©´ì— ë°ì´í„°ë¥¼ ì „ì†¡í•˜ëŠ” ë°©ë²• modelì— ë‹´ì•„ì„œ ì „ì†¡
+		/*model.addAttribute("í™”ë©´ì—ì„œ ì‚¬ìš©í•  ì´ë¦„", ì „ì†¡í• ê°’);*/
+		model.addAttribute("name", "abc");
 		return "home";
 	}
 	
-	@RequestMapping(value = "/test1")
+	@RequestMapping(value="/test1")
 	public String test1(Model model, String id, Integer age) {
-		System.out.println(id);
-		System.out.println(age);
+		System.out.println("ì•„ì´ë””: " +id);
+		System.out.println("ë‚˜ì´ : " + age);
 		return "test1";
 	}
+	
 }
