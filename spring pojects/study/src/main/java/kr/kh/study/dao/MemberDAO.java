@@ -1,14 +1,15 @@
 package kr.kh.study.dao;
 
-import org.springframework.stereotype.Service;
+import org.apache.ibatis.annotations.Param;
 
-@Service
+import kr.kh.study.vo.MemberVO;
 
-public class MemberDAO {
+public interface MemberDAO {
 
-	public int selectCountMember() {
-		return 0;
-	}
+	int selectCountMember();
 
-	
+	MemberVO selectMember(@Param("me_id")String me_id);
+
+	boolean insertMember(@Param("m")MemberVO member);
+
 }

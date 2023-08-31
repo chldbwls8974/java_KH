@@ -25,7 +25,7 @@ public class MemberController {
 	// dynamic과 다르게 get post를 하나의 메서드로 통일하여 사용이 가능
 	@RequestMapping(value="/member/signup", method=RequestMethod.GET)
 	public String signup() {
-		return "member/signup";
+		return "/member/signup";
 	}
 	
 	@RequestMapping(value="/member/signup", method=RequestMethod.POST)
@@ -43,7 +43,7 @@ public class MemberController {
 	
 	@GetMapping(value="/member/login")
 	public String memberlogin() {
-		return "member/login";
+		return "/member/login";
 	}
 	
 	// model은 화면에 전송해줄때 사용
