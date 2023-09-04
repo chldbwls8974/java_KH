@@ -32,5 +32,7 @@
 	</tbody>
 	
 </table>
+
+<a href="<c:url value='/board/insert'/>">글 등록</a>
 </body>
 </html>

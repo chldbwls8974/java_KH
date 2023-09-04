@@ -34,6 +34,8 @@
 		<label>비추천</label>
 		${board.bo_down }
 	</div>
+	
+	<a href="/board/update?bo_num=${board.bo_num }">수정</a>
 </div>
 
 
