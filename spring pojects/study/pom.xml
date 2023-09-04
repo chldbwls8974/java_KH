@@ -170,7 +170,7 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		<!-- Tiles -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.apache.tiles</groupId>
 		    <artifactId>tiles-servlet</artifactId>
 		    <version>${org.apache.tiles-version}</version>
@@ -199,7 +199,7 @@
 		    <groupId>commons-beanutils</groupId>
 		    <artifactId>commons-beanutils</artifactId>
 		    <version>1.8.3</version>
-		</dependency>
+		</dependency> -->
 						
 		
 		
