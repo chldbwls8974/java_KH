@@ -57,23 +57,39 @@ public class BoardController {
 	}
 	
 	@GetMapping(value="/board/update")
-	public String boardUpdate() {
+	public String boardUpdate(Model model, Integer bo_num) {
+		BoardVO board = boardService.getBoard(bo_num);
+		model.addAttribute("board",board);
 		return "/board/update";
 	}
 	
 	@PostMapping(value="/board/update")
-	public String boardUpdatePost(Integer bo_num, Model model,  HttpSession session) {
-		BoardVO board = boardService.getBoard(bo_num);
-		
+	public String boardUpdatePost(Model model, BoardVO board, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
+		boolean res = boardService.updateBoard(board,user);
+		if(res) {
+			msg = new Message("/board/detail?bo_num="+board.getBo_num(), "게시글 수정 성공");
+		}else
+			msg = new Message("/board/detail?bo_num="+board.getBo_num(), "게시글 수정 실패");
 		
-		/*
-		 * boolean res = boardService.updateBoard(bo_num); if(res) { msg = new
-		 * Message("/board/list", "게시글 수정 성공"); }else msg = new Message("/board/insert",
-		 * "게시글 수정 실패");
-		 */
-		model.addAttribute("board",board);
-	//	model.addAttribute("msg",msg);
+		model.addAttribute("msg",msg);
+		return "/util/message";
+	}
+	
+
+	
+	@GetMapping(value="/board/delete")
+	public String boardDeletePost(Integer bo_num, BoardVO board, Model model, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.deleteBoard(board,user);
+		Message msg;
+		if(res) {
+			msg = new Message("/board/list", "게시글 삭제 성공");
+		}else
+			msg = new Message("/board/list", "게시글 삭제 실패");
+		
+		model.addAttribute("msg",msg);
 		return "/util/message";
 	}
 }

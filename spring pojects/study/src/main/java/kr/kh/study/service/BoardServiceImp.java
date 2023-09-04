@@ -50,6 +50,38 @@ public class BoardServiceImp implements BoardService{
 		return res;
 	}
 
+	@Override
+	public boolean updateBoard(BoardVO board, MemberVO user) {
+		if(user==null || user.getMe_id() == null) {
+			return false;
+		}
+		if(board == null || board.getBo_title() == null || board.getBo_title().length()==0) {
+			return false;
+		}
+		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+		if(dbBoard==null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		boolean res= boardDao.updateBoard(board);
+		return res;
+	}
+
+	@Override
+	public boolean deleteBoard(BoardVO board, MemberVO user) {
+		if(user==null || user.getMe_id() == null) {
+			return false;
+		}
+		if(board == null) {
+			return false;
+		}
+		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+		if(dbBoard==null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		boolean res= boardDao.deleteBoard(board);
+		return res;
+	}
+
 
 
 

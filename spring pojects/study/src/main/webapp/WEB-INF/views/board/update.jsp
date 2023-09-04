@@ -9,20 +9,10 @@
 </head>
 <body>
 <h1>게시글 수정</h1>
-	<form action="<c:url value='/board/insert'/>" method="post">
-		<div class="form-group">
-		<input type="hidden" name="bo_num">
-			<label>제목</label>
-			<input type="text" class="form-control" name="bo_title" value="${user.bo_title }">
-		</div>
-		<div class="form-group">
-			<label>작성자</label>
-			<input type="text" class="form-control" name="bo_me_id" value="${user.bo_me_id }" readonly>
-		</div>
-		<div class="form-group">
-			<label>내용</label>
-			<textarea class="form-control" name="bo_content" value="${user.bo_content }"></textarea>
-		</div>
+	<form action="<c:url value='/board/update'/>" method="post">
+	<input type="hidden" name="bo_num" value="${board.bo_num}">
+		<input type="text" name="bo_title" placeholder="제목" value="${board.bo_title}"> <br>
+		<textarea rows="20" cols="30" name="bo_content"  placeholder="내용">${board.bo_content }</textarea> <br>
 		<button>등록</button>
 	</form>
 </body>

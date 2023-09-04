@@ -35,7 +35,8 @@
 		${board.bo_down }
 	</div>
 	
-	<a href="/board/update?bo_num=${board.bo_num }">수정</a>
+	<a href="<c:url value='/board/update?bo_num=${board.bo_num }'/>">수정</a>
+	<a href="<c:url value='/board/delete?bo_num=${board.bo_num }'/>">삭제</a>
 </div>
 
 
