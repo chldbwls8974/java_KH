@@ -1,19 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+	pageEncoding="utf-8" %>
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>스프링</title>
 </head>
 <body>
 	<script type="text/javascript">
-		let msg = ${msg}; // toString 호출
-		if(msg != null | msg.msg != null){
-			alert(msg.msg);
-		}
-		location.href = '<c:url value="/"/>' + msg.url;
+		alert('${msg}');
+		location.href= '<c:url value="${url}"/>';
 	</script>
 </body>
 </html>
