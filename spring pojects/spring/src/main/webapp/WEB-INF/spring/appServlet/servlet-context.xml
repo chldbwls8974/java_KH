@@ -40,65 +40,34 @@
 	
 	<context:component-scan base-package="kr.kh.spring.*" />
 	
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="10485760"/>
-	</beans:bean>
-	
-	<!-- 로그인 / 멤버 / 게스트 interceptor -->
 	<beans:bean id="loginInterceptor" class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="memberInterceptor" class="kr.kh.spring.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="guestInterceptor" class="kr.kh.spring.interceptor.GuestInterceptor"></beans:bean>
+	<beans:bean id="autoLoginInterceptor" class="kr.kh.spring.interceptor.AutoLoginInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/login"/>
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
-	</interceptors>
-	
-	<interceptors>
 		<interceptor>
 			<mapping path="/board/insert"/>
 			<mapping path="/board/update"/>
 			<mapping path="/board/delete"/>
 			<beans:ref bean="memberInterceptor" />
 		</interceptor>
-	</interceptors>
-		
-	<interceptors>
 		<interceptor>
 			<mapping path="/member/login"/>
 			<mapping path="/member/signup"/>
 			<beans:ref bean="guestInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="autoLoginInterceptor" />
+		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
 </beans:beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
