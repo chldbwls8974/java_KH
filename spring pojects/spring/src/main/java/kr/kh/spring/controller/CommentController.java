@@ -43,5 +43,13 @@ public class CommentController {
 		return map;
 	}
 	
+	@PostMapping("/comment/delete")
+	public Map<String, Object> delete(@RequestBody CommentVO comment){
+		Map<String, Object> map = new HashMap<String, Object>();
+		boolean res = commentService.deleteComment(comment);
+		map.put("res", res);
+		return map;
+	}
+	
 	
 }

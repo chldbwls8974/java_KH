@@ -63,37 +63,42 @@
 		<div class="input-group mb-3">
 			<textarea class="form-control" placeholder="댓글" name="co_contents"></textarea>
 		    <div class="input-group-append">
-		      <button class="btn btn-outline-success btn-comment-insert">등록</button>
+		        <button class="btn btn-outline-success btn-comment-insert">등록</button>
 		    </div>
 		</div>
 		<!-- 댓글 목록창 -->
 		<div class="comment-list">
-			<div class="border border-info rounded-sm p-3 mt-3">
-				<div class="">작성자 아이디</div>
-			    <div class="input-group mb-3">
-			      <div class="col-9">
-				      댓글내용
-				  </div>
-				  <div class="col-3">
-				      작성일
-				  </div>
-			    </div>
+			<div class="border rounded-sm border-danger p-3 mt-3">
+				<div class="">작성자아이디</div>
+				<div class="input-group mb-3">
+				    <div class="col-9">
+				        댓글 내용
+				    </div>
+				    <div class="col-3">
+				    	작성일
+				    </div>
+				</div>
+			</div>
+			<div class="border rounded-sm border-danger p-3 mt-3">
+				<div class="">작성자아이디</div>
+				<div class="input-group mb-3">
+				    <div class="col-9">
+				        댓글 내용
+				    </div>
+				    <div class="col-3">
+				    	작성일
+				    </div>
+				</div>
 			</div>
 		</div>
-		
-		
 		<!-- 댓글 페이지네이션 -->
-		 <ul class="pagination justify-content-center mt-3 comment-pagination">
-			 <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+		<ul class="pagination justify-content-center mt-3 comment-pagination">
+		    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
 		    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
 		    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
 		    <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-		 </ul>
-		 
-		 
+		</ul>
 	</div>
-	
-	
 	<!-- 추천 기능 자바스크립트 -->
 	<script type="text/javascript">
 		//추천 버튼을 클릭했을 때 콘솔창에 추천이라고 출력 
@@ -192,13 +197,19 @@
 			getCommentList(cri);
 		});
 	});
+	
+	/*
+	$(document).on('click', '.btn-comment-delete', function(){
+		alert('삭제 버튼');
+	})
+	*/
+	
 	let cri = {
 			page : 1,
 			perPageNum : 2,
 	}
 	//게시글이 화면에 출력되고 이어서 댓글이 화면에 출력되어야 하기 때문에 이벤트 등록없이 바로 호출
 	getCommentList(cri);
-	
 	//현재 페이지 정보가 주어지면 현재 페이지에 맞는 댓글 리스트를 가져와서 화면에 출력하는 함수 
 	function getCommentList(cri){
 		ajaxJsonToJson(false,'post','/comment/list/${board.bo_num}', cri ,(data)=>{
@@ -233,6 +244,15 @@
 			str = '<div class="border rounded-sm border-danger p-3 mt-3">등록된 댓글이 없습니다.</div>';
 		}
 		for(comment of commentList){
+			let btnStr = '';
+			if('${user.me_id}' == comment.co_me_id){
+				btnStr = `
+				<div>
+					<button class="btn btn-outline-warning btn-comment-update" data-num="\${comment.co_num}">수정</button>
+					<button class="btn btn-outline-danger btn-comment-delete" onclick="deleteComment(\${comment.co_num})">삭제</button>
+				</div>
+				`;
+			}
 			str += `
 				<div class="border rounded-sm border-danger p-3 mt-3">
 					<div class="">\${comment.co_me_id}</div>
@@ -244,9 +264,27 @@
 					    	작성일
 					    </div>
 					</div>
+					\${btnStr}
 				</div>`;
 		}
 		$(target).html(str);
+	}
+	//댓글을 삭제하는 함수
+	function deleteComment(co_num){
+		let comment = { 
+				co_num : co_num,
+				co_me_id : '${user.me_id}',
+				co_bo_num : '${board.bo_num}'
+		}
+		ajaxJsonToJson(false,'post','/comment/delete', comment ,(data)=>{
+			if(data.res){
+				alert('댓글을 삭제했습니다.')
+			}else{
+				alert('댓글을 삭제하지 못했습니다.')
+			}
+			cri.page = 1;
+			getCommentList(cri);
+		});
 	}
 </script>
 </body>
