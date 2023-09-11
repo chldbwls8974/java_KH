@@ -49,6 +49,7 @@ public class MemberController {
 		if(user != null) {
 			msg = "로그인 성공!";
 			url = "/";
+			user.setAutoLogin(member.isAutoLogin());
 		}else {
 			msg = "로그인 실패!";
 			url = "/member/login"; 
@@ -61,9 +62,10 @@ public class MemberController {
 	@GetMapping("/member/logout")
 	public String memberLogout(Model model, HttpSession session) {
 		String msg="로그아웃 성공!" , url="/";
-		
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		session.removeAttribute("user");
-		
+		user.setMe_session_limit(null);
+		memberService.updateMemberSession(user);
 		model.addAttribute("url", url);
 		model.addAttribute("msg", msg);
 
