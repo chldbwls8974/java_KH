@@ -12,7 +12,7 @@
 	<form action="<c:url value='/board/update'/>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="bo_num" value="${board.bo_num}">
 		<input type="text" name="bo_title" placeholder="제목" value="${board.bo_title}"> <br>
-		<textarea rows="20" cols="30" name="bo_content"  placeholder="내용">${board.bo_content }</textarea> <br>
+		<textarea rows="20" cols="30" name="bo_contents"  placeholder="내용">${board.bo_contents }</textarea> <br>
 		<h3>첨부파일</h3>
 		<c:forEach items="${fileList}" var="file">
 			<div class="box">
