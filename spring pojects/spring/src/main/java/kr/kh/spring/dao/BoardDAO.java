@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.LikeVO;
@@ -37,8 +38,25 @@ public interface BoardDAO {
 
 	void updateLike(@Param("like")LikeVO likeVo);
 
-	void updatBoardLike(@Param("bo_num")int li_bo_num);
+	void updateBoardLike(@Param("bo_num")int li_bo_num);
 
 	void updateBoardComment(@Param("bo_num")int co_bo_num);
+
+	List<BoardTypeVO> selectBoardTypeList();
+
+	boolean insertBoardType(@Param("bt")BoardTypeVO boardType);
+
+	void insertBoardAuthority(@Param("ba_bt_num")int bt_num, @Param("ba_authority")String authority);
+
+	int selectBoardCountByBoardType(@Param("bo_bt_num")int bt_num);
+
+	int selectBoardTypeCount();
+
+	boolean deleteBoardType(@Param("bt_num")int bt_num);
+
+	boolean updateBoardType(@Param("bt")BoardTypeVO boardType);
+
+	// mapper 에서는 id 명이 같으면 오버로딩 구분을 못하기 때문에 이름을 다르게 지정해주어야 한다.
+	List<BoardTypeVO> selectBoardTypeListByRole(@Param("me_role")String me_role);
 
 }

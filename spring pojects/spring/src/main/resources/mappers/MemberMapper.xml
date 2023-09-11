@@ -22,4 +22,5 @@
 		where
 			me_session_id = #{session_id} and  me_session_limit >= now() 
 	</select>
+
 </mapper>
