@@ -42,9 +42,8 @@
 		    	<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(pm.endPage+1) }'/>">다음</a>
 	    </c:if>
 	  </div>
-	  
-	  
-	  
 	<a class="btn btn-outline-dark btn float-right" href="<c:url value='insert'/>">글쓰기</a>
+	
+	
 </body>
 </html>
