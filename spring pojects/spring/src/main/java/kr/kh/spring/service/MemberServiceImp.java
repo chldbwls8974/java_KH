@@ -18,6 +18,7 @@ public class MemberServiceImp implements MemberService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null) {

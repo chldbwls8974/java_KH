@@ -118,12 +118,32 @@
 						
 					}
 					$('.comment-list').html(str);
+					
+					// 댓글 페이지네이션
+					let pm = data.pm;
+					str = '';
+					// 이전 버튼 배치
+					if(pm.prev){
+						str += `<a href="javascript:void(0);" onclick="changePage(\${pm.startPage-1})">이전</a>`;
+					}
+					// 숫자 버튼 배치
+					for(i = pm.startPage; i<=pm.endPage; i++){
+						str += `<a href="javascript:void(0);" onclick="changePage(\${i})">\${i}</a>` // 자바스크립트 변수로 사용하기 위해서는 \를 붙여줘야함
+					}
+					// 다음 버튼 배치
+					if(pm.next){
+						str +=`<a href="javascript:void(0);" onclick="changePage(\${pm.endPage+1})">다음</a>`;
+					}
+					$('.pagination').html(str);
 				}
 			})
 		}
 		
 		
-		
+		function changePage(page){
+			cri.page = page;
+			getCommentList(cri);
+		}
 		
 		
 		
