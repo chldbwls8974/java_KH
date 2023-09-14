@@ -204,6 +204,7 @@
 		let commentBox = $(this).parents('.comment-box')
 		changeBox(commentBox);
 	})
+	
 	$(document).on('click', '.btn-update-complete', function(){
 		let co_num = $(this).parents('.comment-box').find('[name=co_num]').val();
 		let co_contents = $(this).parents('.comment-box').find('[name=co_contents]').val();

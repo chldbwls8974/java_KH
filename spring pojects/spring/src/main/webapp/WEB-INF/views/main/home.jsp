@@ -7,15 +7,19 @@
 </head>
 <body>
 	<h1>메인</h1>
+	<button id="btn1" class="btn btn-outline-success">버튼1 </button><br>
+	<button id="btn2" class="btn btn-outline-success mt-2">버튼2 </button><br>
+	<button id="btn3" class="btn btn-outline-success mt-2">버튼3 </button><br>
+	<button id="btn4" class="btn btn-outline-success mt-2">버튼4 </button><br>
+	
 	
 	<script type="text/javascript">
+	$('#btn1').click(function(){
+
 		let data ={
 				me_id : 'abc',
 				me_pw : 'test'
 		}
-	
-	
-		// 매개변수로 객체가 필요
 		$.ajax({
 			async : false, /*비동기 : false => 동기화*/
 			type : 'post', /* 전송방식 : get post */
@@ -27,6 +31,59 @@
 				console.log(data);				
 			}
 		});
+	})
+	
+	$('#btn2').click(function(){
+		let data={
+				bo_num : 1
+		}
+		
+		$.ajax({
+			async : false,
+			type : 'post',
+			url : '<c:url value="/ajax/test2"/>',
+			data : data,
+			dataType : "json", 
+			success : function(data){ /* ajax가 성공하면 실행될 메서드로 서버ㅔ서 보낸 데이터를 매개변수에 저장 */
+				console.log(data);				
+			}
+		});
+	})
+	
+		$('#btn3').click(function(){
+		let data={
+				bo_num : 1
+		}
+		
+		$.ajax({
+			async : false,
+			type : 'post',
+			url : '<c:url value="/ajax/test3"/>',
+			data : data,
+			success : function(data){ /* ajax가 성공하면 실행될 메서드로 서버ㅔ서 보낸 데이터를 매개변수에 저장 */
+				console.log(data);				
+			}
+		});
+	})
+	
+		$('#btn4').click(function(){
+		let data={
+				bo_num : 1
+		}
+		
+		$.ajax({
+			async : false,
+			type : 'post',
+			url : '<c:url value="/ajax/test4/1"/>',
+			data : data,
+			success : function(data){ /* ajax가 성공하면 실행될 메서드로 서버ㅔ서 보낸 데이터를 매개변수에 저장 */
+				console.log(data);				
+			}
+		});
+	})
+	
+	
 	</script>
+	
 </body>
 </html>
