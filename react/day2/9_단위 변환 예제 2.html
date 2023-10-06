@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단위변환 예제2</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script> 
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        /*
+        input 태그를 이용하여 분을 입력받고,
+        입력받은 분을 시로 변환하는 코드를 작성
+        */
+
+        function App(){
+            let [amount, setAmount] = React.useState(0);
+            let [fliped, setFliped] = React.useState(false);
+            const onChange = (e) => setAmount(e.target.value);
+            const reset = () => setAmount(0);
+            const convert = ()=> setFliped((item)=>!item);
+            
+
+
+            return (
+                <div>
+                    <div>
+                         <input type="number" onChange={onChange} value={amount} disabled={fliped}/>분
+                    </div>
+
+                    <div>
+                         <input type="number"  value={parseInt(amount/60)} disabled={!fliped}/>시간
+                    </div>
+                    <button onClick={reset}>리셋</button>
+                    <button onClick={convert}>변환</button>
+                </div>
+            )
+       }
+
+        ReactDOM.render(<App/>,root);
+    </script>
+</body>
+</html>

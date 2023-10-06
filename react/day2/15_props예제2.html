@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props 예제</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script> 
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        /*
+        Btn 컴포넌트를 생성한 후, 컴포넌트를 이용하여 버튼 1과 2를 만들고
+        버튼 1을 클릭하면 2가 토글되게
+        */
+     
+
+        function Btn({text,css,click,show}){
+            return(
+                // show가 변수로 들어오는거라 {}를 빼줘야함
+                // 앞에 choice는 jsx 태그안에 들어가는 거라 중괄호를 해줘야하지만
+                // 하단의 show는 jsx 태그 밖에서 쓰는거라 {}를 뺌.
+                 show ? <button style={css} onClick={click}>{text}</button> : null
+            );
+        }
+
+
+        function App(){
+            let [show, setShow] = React.useState(true);
+            const onClick = () => {setShow(!show)};
+            return (
+                <div>
+                    <Btn text="버튼1" css={{color :'red', fontsize: 20}} show ={true} click={onClick}/>
+                    <Btn text="버튼2" css={{backgroundColor : 'tomato'}} show={show}/>
+                </div>
+            )
+       }
+
+       /*
+       자료형 제한
+       Btn.propTypes ={
+        text : PropTypes.string.isRequired,
+        css : PropTypes.object,
+       }
+        */
+
+        ReactDOM.render(<App/>,root);
+    </script>
+</body>
+</html>
