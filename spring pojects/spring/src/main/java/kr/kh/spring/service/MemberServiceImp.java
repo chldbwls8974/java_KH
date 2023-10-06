@@ -110,5 +110,15 @@ public class MemberServiceImp implements MemberService {
 		return false;
 	}
 
+	@Override
+	public MemberVO getMember(String me_id) {
+		if(me_id == null) {
+			return null;
+		}
+		MemberVO dbMember = memberDao.selectMember(me_id);
+		//System.out.println(dbMember);
+		return dbMember;
+	}
+
 	
 }

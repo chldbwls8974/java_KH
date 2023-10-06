@@ -11,11 +11,13 @@
 		<div class="form-group">
 			<label>아이디</label>
 			<input type="text" class="form-control" name="me_id">
+			
 		</div>
 		<div class="form-group">
 			<label>비번</label>
-			<input type="password" class="form-control" name="me_pw">
+			<input type="password" class="form-control" name="me_pw" id="pw">
 		</div>
+		
 		<div class="form-check-inline">
 		  <label class="form-check-label">
 		    <input type="checkbox" class="form-check-input" value="true" name="autoLogin">자동로그인

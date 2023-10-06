@@ -14,4 +14,6 @@ public interface MemberService {
 
 	boolean sendMail(String to, String title, String contents);
 
+	MemberVO getMember(String me_id);
+
 }
