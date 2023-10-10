@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
 
 function App() {
+  // function은 return 컴포넌트를 필요로 함. 
+  // 컴포넌트는 부모가 하나여야함.
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Main/>
+      <Footer/>
     </div>
   );
 }
 
+
+// 함수를 만들면 반드시 export 를 통해서 밖에서 사용할 수 있다.
 export default App;
