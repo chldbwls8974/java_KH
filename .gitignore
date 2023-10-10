@@ -90,3 +90,7 @@ cached-antora-playbook.yml
 
 target/
 test/
+log4j.xml
+
+#react
+node_modules

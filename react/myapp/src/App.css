@@ -1,0 +1,34 @@
+
+.box{
+    width: calc((100%) / 3); height: 100%;
+    float: left; padding-right: 10px;
+    box-sizing: border-box;
+}
+.inner-box{
+    background-color: yellow;
+    width: 100%; height: 100%;
+}
+.inner-box:hover{
+    background-color: rebeccapurple;
+}
+
+.footer{
+    background-color: gray;
+   height: 300px; padding: 30px;
+}
+
+.body{
+    height: calc(100vh - 56px - 210px); position: relative;
+    padding: 10px; background-color: aqua; display: flex;
+}
+.left-box{
+    width: 49%; background-color: azure; height: 100%; margin-right: 15px;
+}
+.right-box{
+    width: 49%; background-color: antiquewhite; height: 100%;
+}
+.pagination-box{
+    height: 30%;
+    background-color: aquamarine;
+}
+
